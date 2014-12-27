@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installing and configuring SiteSupra &mdash; SiteSupra 9.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SiteSupra 9.0.1 documentation" href="../index.html" />
+    <link rel="next" title="SiteSupra at a Glance" href="sitesupra_at_a_glance.html" />
+    <link rel="prev" title="Welcome to SiteSupra’s documentation!" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sitesupra_at_a_glance.html" title="SiteSupra at a Glance"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome to SiteSupra’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">SiteSupra 9.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installing-and-configuring-sitesupra">
+<span id="index-0"></span><h1>Installing and configuring SiteSupra<a class="headerlink" href="#installing-and-configuring-sitesupra" title="Permalink to this headline">¶</a></h1>
+<p>A few words on the process...</p>
+<div class="section" id="software-requirements">
+<h2>Software requirements<a class="headerlink" href="#software-requirements" title="Permalink to this headline">¶</a></h2>
+<p>SiteSupra requires PHP 5.4 or higher. SiteSupra can run under Apache and ngnix.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">SiteSupra is not tested on Windows platform yet.</p>
+</div>
+</div>
+<div class="section" id="cloning-sitesupra">
+<h2>Cloning SiteSupra<a class="headerlink" href="#cloning-sitesupra" title="Permalink to this headline">¶</a></h2>
+<p>SiteSupra source code is hosted at github.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/SiteSupra/sitesupra.git sitesupra
+</pre></div>
+</div>
+<div class="section" id="configuring-sitesupra">
+<h3>Configuring SiteSupra<a class="headerlink" href="#configuring-sitesupra" title="Permalink to this headline">¶</a></h3>
+<p>Open your command console and execute the following three commands:</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Run ....</p>
+</div>
+</div>
+<div class="section" id="configuring-apache-rewrite-rules">
+<h3>Configuring Apache rewrite rules<a class="headerlink" href="#configuring-apache-rewrite-rules" title="Permalink to this headline">¶</a></h3>
+<p>Rewrite rules for Apache vhost configuration file:</p>
+<div class="highlight-bash"><div class="highlight"><pre>RewriteEngine on
+
+RewriteCond %<span class="o">{</span>DOCUMENT_ROOT<span class="o">}</span>%<span class="o">{</span>REQUEST_FILENAME<span class="o">}</span>.less -f
+RewriteRule ^<span class="o">(</span>.*<span class="se">\.</span>css<span class="o">)</span><span class="nv">$ </span>/cms/lib/supra/combo/combo.php?<span class="nv">$1</span> <span class="o">[</span>L,NS<span class="o">]</span>
+
+RewriteCond %<span class="o">{</span>DOCUMENT_ROOT<span class="o">}</span>%<span class="o">{</span>REQUEST_FILENAME<span class="o">}</span> -f
+RewriteRule ^ - <span class="o">[</span>L,NS<span class="o">]</span>
+
+RewriteRule ^<span class="o">(</span>.*<span class="o">)</span><span class="nv">$ </span>/index.php<span class="nv">$1</span> <span class="o">[</span>L,NS<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rewrite-rules-for-htaccess-file">
+<h3>Rewrite rules for .htaccess file:<a class="headerlink" href="#rewrite-rules-for-htaccess-file" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre>RewriteEngine on
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installing and configuring SiteSupra</a><ul>
+<li><a class="reference internal" href="#software-requirements">Software requirements</a></li>
+<li><a class="reference internal" href="#cloning-sitesupra">Cloning SiteSupra</a><ul>
+<li><a class="reference internal" href="#configuring-sitesupra">Configuring SiteSupra</a></li>
+<li><a class="reference internal" href="#configuring-apache-rewrite-rules">Configuring Apache rewrite rules</a></li>
+<li><a class="reference internal" href="#rewrite-rules-for-htaccess-file">Rewrite rules for .htaccess file:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index.html"
+                        title="previous chapter">Welcome to SiteSupra&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sitesupra_at_a_glance.html"
+                        title="next chapter">SiteSupra at a Glance</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/book/installation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="sitesupra_at_a_glance.html" title="SiteSupra at a Glance"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome to SiteSupra’s documentation!"
+             >previous</a> |</li>
+        <li><a href="../index.html">SiteSupra 9.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, SiteSupra.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

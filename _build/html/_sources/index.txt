@@ -6,11 +6,17 @@
 Welcome to SiteSupra's documentation!
 =====================================
 
+SiteSupra is open source PHP framework and extremely powerful web site
+builder bundled with user-friendly CMS.
+
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
+   book/installation
+   book/sitesupra_at_a_glance
+   book/where_to_start
 
 
 Indices and tables
