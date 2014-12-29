@@ -20,7 +20,7 @@ SiteSupra requires PHP 5.4 or higher. SiteSupra can run under Apache and ngnix.
     SiteSupra is not tested on Windows platform yet.
 
 Cloning SiteSupra
-----------------------------------
+-----------------
 
 SiteSupra source code is hosted at github.
 
@@ -34,15 +34,15 @@ Configuring SiteSupra
 
 Open your command console and execute the following three commands:
 
-
-
 .. tip::
 
     Run ....
 
 
-Configuring Apache rewrite rules
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configuring Apache
+~~~~~~~~~~~~~~~~~~
+
+.. index:: Installation; Apache
 
 Rewrite rules for Apache vhost configuration file:
 
@@ -60,9 +60,11 @@ Rewrite rules for Apache vhost configuration file:
 
 
 
-Rewrite rules for .htaccess file:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configuring nginx
+~~~~~~~~~~~~~~~~~
+
+.. index:: Installation; nginx
 
 .. code-block:: bash
 
-   RewriteEngine on
+

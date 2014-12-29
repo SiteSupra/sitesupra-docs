@@ -1,1 +1,2 @@
-.. index:: Block
+.. index::
+    single: Block
