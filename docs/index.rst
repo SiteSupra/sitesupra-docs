@@ -5,7 +5,8 @@ Full guide
 ==========
 
 .. toctree::
+    :hidden:
 
-    why-another
+    why_another
     concepts
-    installation-configuration
+    installation_configuration
