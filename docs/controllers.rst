@@ -1,0 +1,5 @@
+.. index::
+    single: Controllers
+
+Controllers
+===========

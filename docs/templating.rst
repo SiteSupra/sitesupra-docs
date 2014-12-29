@@ -1,0 +1,5 @@
+.. index::
+    single: Templating
+
+Templating
+==========

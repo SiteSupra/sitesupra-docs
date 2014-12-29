@@ -23,6 +23,7 @@ builder bundled with user-friendly CMS.
    docs/where_to_start
 
 Full guide:
+-----------
 
 .. toctree::
    :maxdepth: 1
@@ -30,20 +31,22 @@ Full guide:
    docs/why_another
    docs/installation
    docs/concepts
+   docs/standard_packages
    docs/adding_a_page
    docs/http_kernel
    docs/di_container
    docs/supra_cli
    docs/database_and_audit
    docs/routing
-   docs/controller
+   docs/controllers
    docs/page_routing
-   docs/caching
+   docs/cache
    docs/blocks_and_editables
    docs/templating
    docs/development_and_production
 
 Cookbook articles:
+------------------
 
 .. toctree::
    :maxdepth: 1
@@ -52,10 +55,21 @@ Cookbook articles:
    cookbook/crud
    cookbook/controller
 
+Reference:
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   reference/blocks
+
 Indices and tables
 ==================
 
+..
+   * :ref:`modindex`
+
 * :ref:`genindex`
 * :ref:`search`
-.. * :ref:`modindex`
+
 
