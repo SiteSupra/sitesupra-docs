@@ -9,6 +9,9 @@ A few words on the process...
 Software requirements
 ---------------------
 
+.. index::
+    single: Installation; Requirements
+
 SiteSupra requires PHP 5.4 or higher. SiteSupra can run under Apache and ngnix.
 
 

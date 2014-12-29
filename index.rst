@@ -48,6 +48,10 @@ Cookbook articles:
 .. toctree::
    :maxdepth: 1
 
+   cookbook/block
+   cookbook/crud
+   cookbook/controller
+
 Indices and tables
 ==================
 
