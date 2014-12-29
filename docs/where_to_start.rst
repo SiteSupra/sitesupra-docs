@@ -1,5 +1,5 @@
 .. index::
-   single: Where to start
+   single: Quickstart
 
 Where to start
 ==================================

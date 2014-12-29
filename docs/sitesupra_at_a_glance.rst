@@ -1,5 +1,5 @@
 .. index::
-   single: SiteSupra at a Glance
+   single: Promo
 
 SiteSupra at a Glance
 ==================================

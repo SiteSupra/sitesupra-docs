@@ -16,24 +16,37 @@ SiteSupra is open source PHP framework and extremely powerful web site
 builder bundled with user-friendly CMS.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    
-   book/installation
-   book/sitesupra_at_a_glance
-   book/where_to_start
+   docs/installation
+   docs/sitesupra_at_a_glance
+   docs/where_to_start
 
 Full guide:
 
 .. toctree::
-   :hidden:
+   :maxdepth: 1
 
-   docs/index
-
-.. include:: /docs/map.rst.inc
+   docs/why_another
+   docs/installation
+   docs/concepts
+   docs/adding_a_page
+   docs/http_kernel
+   docs/di_container
+   docs/supra_cli
+   docs/database_and_audit
+   docs/routing
+   docs/controller
+   docs/page_routing
+   docs/caching
+   docs/blocks_and_editables
+   docs/templating
+   docs/development_and_production
 
 Cookbook articles:
 
 .. toctree::
+   :maxdepth: 1
 
 Indices and tables
 ==================

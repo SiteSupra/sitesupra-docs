@@ -2,12 +2,12 @@
    single: Installation
 
 Installing and configuring SiteSupra
-==================================
+====================================
 
 A few words on the process...
 
 Software requirements
-----------------------------------
+---------------------
 
 SiteSupra requires PHP 5.4 or higher. SiteSupra can run under Apache and ngnix.
 
@@ -27,7 +27,7 @@ SiteSupra source code is hosted at github.
 
 
 Configuring SiteSupra
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 Open your command console and execute the following three commands:
 
@@ -39,7 +39,7 @@ Open your command console and execute the following three commands:
 
 
 Configuring Apache rewrite rules
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Rewrite rules for Apache vhost configuration file:
 
@@ -58,7 +58,7 @@ Rewrite rules for Apache vhost configuration file:
 
 
 Rewrite rules for .htaccess file:
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
