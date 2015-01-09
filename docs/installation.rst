@@ -48,16 +48,12 @@ Rewrite rules for Apache vhost configuration file:
 
 .. code-block:: bash
 
-    RewriteEngine on
-
-    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME}.less -f
-    RewriteRule ^(.*\.css)$ /cms/lib/supra/combo/combo.php?$1 [L,NS]
+    RewriteEngine On
 
     RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} -f
+    
     RewriteRule ^ - [L,NS]
-
-    RewriteRule ^(.*)$ /index.php$1 [L,NS]
-
+    RewriteRule ^.*$ /index.php$0 [L,NS]
 
 
 Configuring nginx
