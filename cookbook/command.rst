@@ -10,7 +10,7 @@ General considerations
 
 Before getting started, you should read `Symfony's guide to creating basic command <http://symfony.com/doc/current/components/console/introduction.html#creating-a-basic-command>`_ - SiteSupra mostly follows the same approach, with minor differences:
 
-* a command must extend Supra\Core\Console\AbstractCommand (or implement Supra\Core\DependencyInjection\ContainerAware, read more about it in :doc:`di_container` section
+* a command must extend ``Supra\Core\Console\AbstractCommand`` (or implement ``Supra\Core\DependencyInjection\ContainerAware``, read more about it in :doc:`../docs/di_container` section
 * there is no limit on where you store your commands or what namespace are you using - SiteSupra does not autoload commands, so you are free to choose your class structure
 
 Summing up, basic console command can look like this;
