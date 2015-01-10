@@ -31,7 +31,7 @@ SiteSupra source code is hosted at `github <https://github.com/SiteSupra/sitesup
 
 
 Configuring SiteSupra
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 When you've finished cloning SiteSupra, you have to do the following:
 
@@ -45,7 +45,7 @@ When you've finished cloning SiteSupra, you have to do the following:
 All done! Now just point your web server of choice to ``web`` directory in SiteSupra project root.
 
 Configuring Apache
-~~~~~~~~~~~~~~~~~~
+------------------
 
 .. index:: Installation; Apache
 
@@ -65,7 +65,7 @@ Rewrite rules are pretty simple (don't worry, they are already provided in ``.ht
 
 
 Configuring nginx
-~~~~~~~~~~~~~~~~~
+-----------------
 
 .. index:: Installation; nginx
 
