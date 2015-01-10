@@ -10,7 +10,7 @@ General concepts
 
 Basically, SiteSupra uses `Symfony console component <http://symfony.com/doc/current/components/console/introduction.html>`_ for console operations. `Boris <https://github.com/d11wtq/boris>`_ is used for REPL shell.
 
-The main console executable is ``supra/cli.php``. Running it with no parameters (like ``php supra/cli.php`` will give
+The main console executable is ``supra/cli.php``. Running it with no parameters (like ``php supra/cli.php``) will give
 you a list of all available commands.
 
 CLI by default loads with ``cli`` environment and debugging enabled.
@@ -200,7 +200,7 @@ supra:nested_set:check
 
     Warning! Dragons ahead! This is internal feature, use it on your own risk!
 
-Since SiteSupra uses custom NestedSet implementation, it sometimes needs to be fixes. This command tries is best to do so.
+Since SiteSupra uses custom NestedSet implementation, it sometimes needs to be fixed. This command tries is best to do so.
 
 
 Writing your own Command
