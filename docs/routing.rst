@@ -10,7 +10,7 @@ Loading routes
 --------------
 
 SiteSupra routing is heavily based on Symfony routing component and uses very similar syntax. However, there are some
-minor differences. First of all, you have to load all your routing files manually in your package's ``inject()`` method:
+minor differences. For example, you have to load all your routing files manually in your package's ``inject()`` method:
 
 .. code-block:: php
     :linenos:
@@ -21,7 +21,7 @@ minor differences. First of all, you have to load all your routing files manuall
         $container->getApplication()->locateConfigFile($this, 'routes.yml')
     );
 
-``locateConfigFile`` searches ``routes.yml`` in your package's ``Resources\config`` directory.
+Function ``locateConfigFile`` searches ``routes.yml`` in your package's ``Resources\config`` directory.
 
 Common example
 --------------
@@ -85,5 +85,5 @@ secondly, you can provide ``frontend: true`` option and use in Javascript like t
 
 .. code-block:: javascript
     :linenos:
-    
+
     Supra.Url.generate('cms_dashboard');
