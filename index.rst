@@ -54,6 +54,8 @@ Cookbook articles:
    cookbook/block
    cookbook/crud
    cookbook/controller
+   cookbook/command
+   cookbook/package
 
 Reference:
 ----------
