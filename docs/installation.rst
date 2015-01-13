@@ -8,17 +8,7 @@ As SiteSupra is based on Symfony components, and manages dependencies with compo
   straightforward.
 
 Software requirements
----------------------
 
-.. index::
-    single: Installation; Requirements
-
-SiteSupra requires PHP 5.4 or higher. SiteSupra can run under Apache and ngnix.
-
-
-.. note::
-
-    SiteSupra is not tested on Windows platform yet.
 
 Cloning SiteSupra
 -----------------
