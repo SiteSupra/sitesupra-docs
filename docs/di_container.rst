@@ -25,8 +25,8 @@ handling.
     same way Symfony does.
 
 Everything is simple, right? Last thing to note would be that any object implementing
-``Supra\Core\DependencyInjection\Container\ContainerAware`` will be provided with ``Container`` on instantiation (calling
- setContainer).
+``Supra\Core\DependencyInjection\Container\ContainerAware`` will be provided with ``Container`` on instantiation
+(calling setContainer).
 
 Container building process
 --------------------------
@@ -229,10 +229,70 @@ container parameters 'framework.doctrine' and 'framework.doctrine_audit', and yo
 ``$container->getParameter('framework.doctrine_audit')['entities']`` later in your code.
 
 You may also reference any parameter using percent notation (``%parameter.name%``). In the example above, ``line 18``
-references value from ``line 11``, probably overridden by another package or main SiteSupra's ``config.yml``.
+references value from ``line 11``, possibly overridden by another package or main SiteSupra's ``config.yml``.
+
+After calling ``inject()`` method of all packages, container builder merges configuration values (also replacing /
+referencing parameters), and starts calling ``finish()`` method of all packages, in load order. You ``finish()`` method
+can look like so:
+
+.. code-block:: php
+    :linenos:
+
+    <?php
+
+    public function finish(ContainerInterface $container)
+    {
+        //extend some other package service
+        $container->extend('some.other.service', function ($originalService, $container) {
+            $originalService->callSomeMethod();
+
+            return new SomeWrapper($originalService);
+        };
+
+        $doctrineConfig = $container->getParameter('framework.doctrine');
+
+        //processed configuration from example above. with merged parameters and optionally overridden by main config.yml
+        $connectionDetails = $doctrineConfig['connections']['default'];
+    }
+
+So, summing up:
+
+1. you define your configuration in ``inject()`` method
+2. container processes your configuration and merges it
+3. you retrieve processed values from container in ``finish()`` method and define your services
+4. resulting container is available throughout SiteSupra
 
 Main SiteSupra configuration file (config.yml)
 ----------------------------------------------
+
+Default SiteSupra config file, found in ``supra/config.yml.example``, looks like following:
+
+.. code-block:: yaml
+    :linenos:
+
+    cms:
+        active_theme: default
+    framework:
+        doctrine:
+            credentials:
+                hostname: localhost
+                username: root
+                password: ~
+                charset: utf8
+                database: supra9
+    cms_authentication:
+        users:
+            shared_connection: null
+            user_providers:
+                doctrine:
+                    supra.authentication.user_provider.public:
+                        em: public
+                        entity: CmsAuthentication:User
+            provider_chain: [ doctrine.entity_managers.public ]
+
+Top-level keys correspond to package names, corresponding values are deep-merged with default values resolved in injection
+phase. Here you can see how default 'doctrine.configuration' values are merged with defaults from SupraPackageFramework;
+any part of configuration defined can be overridden.
 
 Container parameter handling, parameter substitution
 ----------------------------------------------------
