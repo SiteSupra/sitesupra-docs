@@ -9,6 +9,24 @@
 Welcome to SiteSupra's documentation!
 =====================================
 
+About SiteSupra:
+----------------
+
+.. toctree::
+   :maxdepth: 1
+
+   docs/why_another
+   docs/sitesupra_at_a_glance
+
+Installation:
+-------------
+
+.. toctree::
+   :maxdepth: 1
+
+   docs/requirements
+   docs/installation
+
 Quick start:
 ------------
 
@@ -18,11 +36,11 @@ builder bundled with user-friendly CMS.
 .. toctree::
    :maxdepth: 1
    
+   docs/concept
    docs/installation
-   docs/sitesupra_at_a_glance
-   docs/where_to_start
+   cookbook/widget
 
-Full guide:
+Developer's guide:
 -----------
 
 .. toctree::
@@ -51,11 +69,17 @@ Cookbook articles:
 .. toctree::
    :maxdepth: 1
 
-   cookbook/block
+   cookbook/widgets
    cookbook/crud
    cookbook/controller
    cookbook/command
    cookbook/package
+
+
+CMS:
+----
+
+
 
 Reference:
 ----------
@@ -63,7 +87,7 @@ Reference:
 .. toctree::
    :maxdepth: 1
 
-   reference/blocks
+   reference/widgets
 
 Indices and tables
 ==================
