@@ -10,13 +10,13 @@ Core concepts
 
 SiteSupra DI layer is based on `Pimple <http://pimple.sensiolabs.org/>`_. If you're curious about what is DI (short of
 Dependency Injection) you can consult Wiki `here <http://en.wikipedia.org/wiki/Inversion_of_control>`_ and
-`here <http://en.wikipedia.org/wiki/Dependency_injection>`_, and, of course, consult
+`here <http://en.wikipedia.org/wiki/Dependency_injection>`_, and, of course, read
 `Symfony's documentation <http://symfony.com/doc/current/book/service_container.html>`_ about basic DI principles.
 
 SiteSupra main container class is ``Supra\Core\DependencyInjection\Container``. It extends Pimple's
 `Container <https://github.com/silexphp/Pimple/blob/master/src/Pimple/Container.php>`_, implements SiteSupra's
 ``Supra\Core\DependencyInjection\ContainerInterface``, implements some hard-code methods (remember, we're a CMS, and
-not a full-stack framework, some items like Doctrine or Cache are always present), and implementing some parameter
+not a full-stack framework, some items like Doctrine or Cache are always present), and provides some parameter
 handling.
 
 .. note::
@@ -42,14 +42,12 @@ returns ``Container`` object during call to ``buildContainer``. This is done in 
 * injecting packages (allowing to expose their basic configuration)
 * building configuration (there the configuration is being validated, default values set, container parameters are substituted and so on)
 * finishing configuration, when packages can override or extend config values of other packages
-* fires ``Supra::EVENT_CONTAINER_BUILD_COMPLETE`` event
-
-more on these events later.
+* firing ``Supra::EVENT_CONTAINER_BUILD_COMPLETE`` event
 
 Package integration and two-pass container building
 ---------------------------------------------------
 
-First of all, package needs to be registered. This is done by overriding ``registerPackages`` in ``SupraApplication``
+First of all, a package needs to be registered. This is done by overriding ``registerPackages`` in ``SupraApplication``
 class (located in ``supra/SupraApplication.php``). This method simply returns array of package instances, like so:
 
 .. code-block:: php
@@ -118,7 +116,7 @@ This call parses config file, processes the configuration using package configur
 `Symfony configuration component article <http://symfony.com/doc/current/components/config/definition.html>`_, and stores
 the values for further processing.
 
-Later, you can access already defined services (as on ``line 7``, which though is not a very good approach since
+Later, you can access already defined services (as on ``line 7``, which though is not a very good approach since it
 instantiates the service), add your own service definitions (``lines 9-11``) and access container parameters (``line 13``).
 
 Each package has it's own configuration definition. Concrete configuration object is created during call to ``getConfiguration()``
@@ -297,6 +295,64 @@ any part of configuration defined can be overridden.
 Container parameter handling, parameter substitution
 ----------------------------------------------------
 
+*Parameters* are SiteSupra-specific extension to Pimple. Basically they represent simple key-value storage (with all
+the getters, setters and so on - consult ``Supra\Core\DependencyInjection\Container`` for more reference. However, some
+methods are worth to be noted separately:
+
+* ``replaceParameters``, that searches array of data, and replaces all parameters, enclosed in percent signs (like %foo.bar%) to their respective values
+* ``replaceParametersScalar``, that replaces all parameters, enclosed in percent signs (like %foo.bar%) to their respective values in a scalar variable (string)
+* ``getParameter``, that threats dots inside parameter name as internal array keys (thus allowing you to call ``$container->getParameter('foo.bar.buz.example')`` instead of ``$container->getParameter('foo.bar')['buz']['example']``)
+
 Service definition
 ------------------
+
+Each package, having ``->addServiceDefinition()`` in their configuration, can define services in their config file under
+section ``services``.
+
+The simplest service definition contains service id and class name:
+
+.. code-block:: yaml
+    :linenos:
+
+    services:
+        locale.manager:
+            class: \Supra\Core\Locale\LocaleManager
+
+You can provide constructor arguments as an array:
+
+.. code-block:: yaml
+    :linenos:
+
+    services:
+        supra.doctrine.event_subscriber.table_name_prefixer:
+            class: \Supra\Core\Doctrine\Subscriber\TableNamePrefixer
+            parameters: ['su_', '']
+
+Or even use container parameters as arguments:
+
+.. code-block:: yaml
+    :linenos:
+
+    services:
+        supra.framework.session_storage_native:
+            class: \Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage
+            parameters: [[], "@supra.framework.session_handler_doctrine"]
+
+Unfortunately, caller injections are not possible with SiteSupra yet, but still you can use common Pimple's approach
+during ``inject()`` or ``finish()``:
+
+.. code-block:: php
+    :linenos:
+
+    <?php
+
+    $container['some.service'] = function ($container) use ($dependency1, $dependency2) {
+        $service = new SomeService($dependency1);
+
+        $service->setDependency2($dependency2);
+
+        $service->intialize();
+
+        return $service;
+    };
 
