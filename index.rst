@@ -35,13 +35,13 @@ builder bundled with user-friendly CMS.
 
 .. toctree::
    :maxdepth: 1
-   
+
+   docs/where_to_start
    docs/concepts
    docs/installation
-   cookbook/widget
 
 Developer's guide:
------------
+------------------
 
 .. toctree::
    :maxdepth: 1
@@ -69,7 +69,7 @@ Cookbook articles:
 .. toctree::
    :maxdepth: 1
 
-   cookbook/widgets
+   cookbook/block
    cookbook/crud
    cookbook/controller
    cookbook/command
@@ -87,7 +87,7 @@ Reference:
 .. toctree::
    :maxdepth: 1
 
-   reference/widgets
+   reference/blocks
 
 Indices and tables
 ==================
@@ -97,5 +97,3 @@ Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-
-
