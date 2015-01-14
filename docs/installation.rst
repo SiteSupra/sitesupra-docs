@@ -5,9 +5,7 @@ Installing and configuring SiteSupra
 ====================================
 
 As SiteSupra is based on Symfony components, and manages dependencies with composer, the installation process is pretty
-  straightforward.
-
-Software requirements
+straightforward; however, you may consider checking :doc:`requirements` first.
 
 
 Cloning SiteSupra

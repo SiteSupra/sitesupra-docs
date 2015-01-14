@@ -36,7 +36,7 @@ builder bundled with user-friendly CMS.
 .. toctree::
    :maxdepth: 1
    
-   docs/concept
+   docs/concepts
    docs/installation
    cookbook/widget
 
