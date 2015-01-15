@@ -187,4 +187,5 @@ SiteSupra Id contains twenty symbols, and looks like "018dusx9903wosockckg", whe
 EntityAudit and versioning
 --------------------------
 
-
+SiteSupra's versioning is almost completely based on EntityAudit library - see `respective documentation <https://github.com/simplethings/EntityAudit>`_.
+We are not overriding anything there, so this should be enough if you need to implement auditing of your project entities.
