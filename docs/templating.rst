@@ -37,3 +37,27 @@ If you need to register a custom extension, you can do it during package injecti
 
 PageExtension
 -------------
+
+To explain ``PageExtension``, we need to discuss two things: ``PageExecutionContext`` and ``BlockExecutionContext`` (make
+sure you've read :doc:`concepts` first).
+
+Both of these objects are simple container classes for objects defining current block or page being executed. Both of them
+contain a ``Request`` object (plain ``Request`` for Blocks and ``PageRequest`` for Pages) and a ``Controller`` object
+(``BlockController`` and ``PageController`` accordingly).
+
+.. note::
+
+    As other SiteSupra internal features, this is likely to change in the future.
+
+This extension defines one filter (``decorate``, that works with internal ``HtmlTag`` instances), and a lot of functions,
+listed below:
+
+* ``collection()``, and ``list()`` - resolve property to a collection, example would be writing ``{% for item in collection(property('image', 'image')) %}``
+* ``set()`` - resolves property to a set
+* ``property()`` - fetches single property from a Block or Page
+* ``isPropertyEmpty()`` - checks if property value is empty
+* ``placeHolder()`` - defines a placeholder (see :doc:`blocks_and_editables` and :doc:`concepts` for more information).
+
+If you take a look on the source of that extension, you will see that every function is based on a custom ``node_class``;
+this facilitates the process of dynamic creation of block properties - when template is parsed, ``BlockPropertyNodeVisitor``
+creates block properties on-the-fly.
