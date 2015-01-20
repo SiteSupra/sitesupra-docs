@@ -5,3 +5,4 @@
 SiteSupra concepts
 ==================
 
+Please document what is an application (in controller context)
