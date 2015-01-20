@@ -303,6 +303,26 @@ methods are worth to be noted separately:
 * ``replaceParametersScalar``, that replaces all parameters, enclosed in percent signs (like %foo.bar%) to their respective values in a scalar variable (string)
 * ``getParameter``, that threats dots inside parameter name as internal array keys (thus allowing you to call ``$container->getParameter('foo.bar.buz.example')`` instead of ``$container->getParameter('foo.bar')['buz']['example']``)
 
+Standard container parameters
+-----------------------------
+
+Some standard container parameters that can help you in development process are listed below.
+
+Directories
+~~~~~~~~~~~
+
+There is a number of container parameters reflecting SiteSupra directory structure:
+
+* ``directories.project_root`` for project root folder (with ``composer.json`` and other core files)
+* ``directories.supra_root`` for directory where ``Supra.php`` and ``config.yml`` reside
+* ``directories.storage`` for storage folder
+* ``directories.cache`` for cache folder (inside storage root)
+* ``directories.web`` for webroot (this is where SiteSupra entry point, ``index.php``, is)
+* ``directories.public`` for asset root, ``Resources\public`` folders of every package are symlinked there
+
+Environments and debugging
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Service definition
 ------------------
 
