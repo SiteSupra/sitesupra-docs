@@ -62,6 +62,7 @@ Developer's guide:
    docs/blocks_and_editables
    docs/templating
    docs/development_and_production
+   docs/security
 
 Cookbook articles:
 ------------------

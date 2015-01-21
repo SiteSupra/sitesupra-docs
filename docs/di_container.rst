@@ -9,8 +9,8 @@ Core concepts
 -------------
 
 SiteSupra DI layer is based on `Pimple <http://pimple.sensiolabs.org/>`_. If you're curious about what is DI (short of
-Dependency Injection) you can consult Wiki `here <http://en.wikipedia.org/wiki/Inversion_of_control>`_ and
-`here <http://en.wikipedia.org/wiki/Dependency_injection>`_, and, of course, read
+Dependency Injection) you can consult Wiki `here <http://en.wikipedia.org/wiki/Inversion_of_control>`__ and
+`here <http://en.wikipedia.org/wiki/Dependency_injection>`__, and, of course, read
 `Symfony's documentation <http://symfony.com/doc/current/book/service_container.html>`_ about basic DI principles.
 
 SiteSupra main container class is ``Supra\Core\DependencyInjection\Container``. It extends Pimple's
@@ -322,6 +322,11 @@ There is a number of container parameters reflecting SiteSupra directory structu
 
 Environments and debugging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some parameters are affected by current :doc:`development settings <development_and_production>`:
+
+* ``environment`` show current environment - currently on of ``cli``, ``prod`` or ``dev``
+* ``debug`` shows current debug state - either ``true`` of ``false``
 
 Service definition
 ------------------
