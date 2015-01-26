@@ -13,6 +13,8 @@ This tutorial will help you to create a simple block with manageable HTML conten
 Block Configuration
 -------------------
 
+.. TODO it would be goof to give a default folder where to store the class
+
 Create a class, that would represent your block configuration.
 It should extend abstract ``BlockConfig`` class:
 

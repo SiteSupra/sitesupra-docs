@@ -8,13 +8,16 @@ Dependency Injection
 Core Concepts
 -------------
 
-SiteSupra Dependency Injection layer or DI in short is based on `Pimple <http://pimple.sensiolabs.org/>`_. If you're curious about what is DI
-you can read `this <http://en.wikipedia.org/wiki/Inversion_of_control>`__ and
-`this <http://en.wikipedia.org/wiki/Dependency_injection>`__ Wiki articles. We also recommend read
-`Symfony's documentation <http://symfony.com/doc/current/book/service_container.html>`_ about basic DI principles.
+SiteSupra Dependency Injection layer or DI in short is based on `Pimple <http://pimple.sensiolabs.org/>`_.
+If you're curious about what DI is you can read the following Wiki articles:
 
-SiteSupra main container class is ``Supra\Core\DependencyInjection\Container``. It extends Pimple's
-`Container <https://github.com/silexphp/Pimple/blob/master/src/Pimple/Container.php>`_, implements SiteSupra's
+* `Inversion of control <http://en.wikipedia.org/wiki/Inversion_of_control>`__;
+* `Dependency injection <http://en.wikipedia.org/wiki/Dependency_injection>`__.
+
+We also recommend read `Symfony's documentation <http://symfony.com/doc/current/book/service_container.html>`_ about basic DI principles.
+
+SiteSupra main container class is ``Supra\Core\DependencyInjection\Container``.
+It extends Pimple's `Container <https://github.com/silexphp/Pimple/blob/master/src/Pimple/Container.php>`_, implements SiteSupra's
 ``Supra\Core\DependencyInjection\ContainerInterface``, implements some hard-coded methods (remember, we're a CMS, and
 not a full-stack framework, some items like Doctrine or Cache are always present), and provides parameters
 handling.
@@ -48,7 +51,7 @@ Package Integration and Two-pass Container Building
 ---------------------------------------------------
 
 First of all, a package needs to be registered. This is done by overriding ``registerPackages`` in ``SupraApplication``
-class (located in ``supra/SupraApplication.php``). This method simply returns array of package instances, like the below:
+class (located in ``supra/SupraApplication.php``). This method simply returns array of package instances, like in the example below:
 
 .. code-block:: php
     :linenos:
@@ -72,21 +75,21 @@ class (located in ``supra/SupraApplication.php``). This method simply returns ar
         }
     }
 
-Each package must extend ``Supra\Core\Package\AbstractSupraPackage``. You can override the following method to
-to alter SiteSupra behavior:
+.. TODO it would be nice to demonstrate output
 
-* ``boot()`` - this method will be called during SiteSupra boot, see :doc:`http_kernel`;
-* ``inject(ContainerInterface $container)`` - this method will be called during Container building in package injection phase (see above);
-* ``finish(ContainerInterface $container)`` - this method will be called finishing Container build after the configuration is processed;
-* ``shutdown()`` - this method will be called during SiteSupra shutdown, see :doc:`http_kernel`.
 
-The above methods are described below.
+Each package must extend ``Supra\Core\Package\AbstractSupraPackage``.
+You can override any of the following methods to alter SiteSupra behavior:
 
+* ``boot()`` method will be called during SiteSupra boot, see :doc:`http_kernel`;
+* ``inject(ContainerInterface $container)`` method will be called during Container building in package injection phase (see above);
+* ``finish(ContainerInterface $container)`` method will be called finishing Container build after the configuration is processed;
+* ``shutdown()`` method will be called during SiteSupra shutdown, see :doc:`http_kernel`.
 
 Package Configuration
 ---------------------
 
-As mentioned above package configuration may occur in two phases - injection phases and finishing phase. Let's look at both of them starting from ``inject()``:
+As mentioned above package configuration may occur in two phases - injection phase and finishing phase. Let's look at both of them starting from ``inject()``:
 
 .. code-block:: php
     :linenos:
@@ -109,10 +112,10 @@ As mentioned above package configuration may occur in two phases - injection pha
     }
 
 The most important call would be ``$this->loadConfiguration()`` (line 5). This method loads configuration file (by
-default it is ``Resources/config/config.yml``). To load your own configuration pass the file name to the method as second parameter .
+default it is ``Resources/config/config.yml``). To load your own configuration pass the file name to the method as a second parameter .
 
 This call parses config file, processes the configuration using package configuration definition (more on that on
-`Symfony configuration component article <http://symfony.com/doc/current/components/config/definition.html>`_, and stores
+`Symfony configuration component article <http://symfony.com/doc/current/components/config/definition.html>`_), and stores
 the values for further processing.
 
 Later you can access already defined services (see line ``line 7``, which though is not a very good approach since it
@@ -127,7 +130,7 @@ The configuration class should extend ``Supra\Core\Configuration\AbstractPackage
 ``ConfigurationInterface``. This forces you to implement function ``getConfigTreeBuilder()``, returning instance of
 ``Symfony\Component\Config\Definition\Builder\TreeBuilder``. If you're curious about what is a ``TreeBuilder`` and how
 exactly the configuration is being defined, please read `Defining a Hierarchy of Configuration Values Using the TreeBuilder <http://symfony.com/doc/current/components/config/definition.html#defining-a-hierarchy-of-configuration-values-using-the-treebuilder>`_
-on official Symfony documentation. Let's take configuration of ``SupraPackageFrameworkConfiguration`` as an example:
+on official Symfony documentation web site. Let's take configuration of ``SupraPackageFrameworkConfiguration`` as an example:
 
 .. code-block:: php
     :linenos:
@@ -217,6 +220,9 @@ Package configuration files are simple yml files as shown below:
             - created_at
             - updated_at
             - lock
+
+
+.. @TODO need to confirm the last statement on setter injection support is correct
 
 ``Lines 1-6`` define services. Key is service ID, 'class' defines class name and 'parameters' section enables setter injection
 (note that you can inject other services referenced with '@' as shown in ``line 4``). Setter injection is not yet supported.

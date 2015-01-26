@@ -19,7 +19,7 @@ Doctrine Configuration
 ----------------------
 
 In most cases you do not need to configure anything but set up database credentials in ``supra/config.yml``. Commonly,
-you have to override only ``framework.doctrine`` parameter:
+you have to override ``framework.doctrine`` parameter only:
 
 .. code-block:: yaml
     :linenos:
@@ -33,6 +33,8 @@ you have to override only ``framework.doctrine`` parameter:
                 charset: utf8
                 database: supra9
 
+
+.. TODO unclear
 
 If you need auditing for your project issues, you will have to add them to framework.doctrine_audit.entities, along with
 default values, like shown below:
@@ -92,13 +94,12 @@ Basically, you can override any package configuration by using ``getConfiguratio
 CLI Commands
 ------------
 
-Please refer to SiteSupra :doc:`supra_cli` for more information. Basically, all Doctrine commands known by Symfony are available via SiteSupra CLI.
+Please refer to SiteSupra :doc:`supra_cli` for more information. All Doctrine commands known by Symfony are available via SiteSupra CLI.
 
 Standard event listeners
 ------------------------
 
-By default ``SupraPackageFramework`` defines and initializes Doctrine using it's own ``config.yml``. By default, this
-section looks like below:
+By default ``SupraPackageFramework`` defines and initializes Doctrine using it's own ``config.yml``:
 
 .. code-block:: yaml
     :linenos:
@@ -111,6 +112,8 @@ section looks like below:
                     - supra.doctrine.event_subscriber.detached_discriminator_handler
                     - supra.doctrine.event_subscriber.nested_set_listener
                     - supra.doctrine.event_subscriber.timestampable
+
+.. TODO unclear
 
 ``subscribers`` array references the following classes, also defined in ``config.yml``, ``services`` section:
 
@@ -135,7 +138,7 @@ They serve for the following purposes:
 * ``TimestampableListener`` listens to changes in entities implementing ``Supra\Package\Cms\Entity\Abstraction\TimestampableInterface``, calls ``setCreationTime()`` and ``setModificationTime`` if needed;
 * ``NestedSetListener`` handles changes in SiteSupra's NestedSet implementation.
 
-If some other package must add other event subscribers, this can be done by overriding SupraPackageFramework configuration
+If some other package must add other event subscribers, this can be done by overriding ``SupraPackageFramework`` configuration
 like it is done in ``SupraPackageCms``:
 
 .. code-block:: php
@@ -168,17 +171,19 @@ subscribers are set up only in finishing phase).
 Internal Entities and SupraId
 -----------------------------
 
+.. TODO check whether versioning is already enabled
+
 Doctrine, by itself, is a very sensitive system. For example, it does not like when you are trying to persist entity that
-already has id or restore entities with pre-set foreign keys, and so on. However, SiteSupra's versioning, based on
+already has id or restore entities with pre-set foreign keys. However, SiteSupra's versioning, based on
 EntityAudit, does exactly that! Therefore, we are using:
 
-* A custom type, called ``supraId20`` (use ``@Column(type="supraId20")``), that's currently just a 20 letter string;
+* A custom type, called ``supraId20`` (use ``@Column(type="supraId20")``). That's currently just a 20 characters length string;
 * A custom base entity ``Supra\Package\Cms\Entity\Abstraction\Entity``, which is a ``@MappedSuperclass``, and provides base methods like ``regenerateId``, ``__clone`` etc.
 
 SiteSupra Id contains twenty symbols and looks like "018dusx9903wosockckg", where:
 
-* First 9 symbols contain timestamp converted to base36 (to be honest, we do not use standard unix timestamps, our base date is 16 Dec 2011, 11:33:05 - that's when supraId was introduced);
-* Next two symbols contains internal counter of entities persisted in current session;
+* First 9 symbols are reserved for timestamp converted to base36. Tto be honest, we do not use standard unix timestamps. Our base date is 16 Dec 2011, 11:33:05. That's the day when supraId was introduced;
+* Next two symbols are reserved for internal counter of entities persisted in current session;
 * Trailing 9 symbols are just a randomly generates suffix.
 
 .. note::

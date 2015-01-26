@@ -11,10 +11,10 @@ General Considerations
 We would recommend to read `Symfony's guide to creating basic command <http://symfony.com/doc/current/components/console/introduction.html#creating-a-basic-command>`_ prior to proceed further.
 SiteSupra mostly follows the same approach with a few minor differences:
 
-* A command must extend ``Supra\Core\Console\AbstractCommand`` (or implement ``Supra\Core\DependencyInjection\ContainerAware``), read more about it in :doc:`../docs/di_container` section;
+* A command must extend ``Supra\Core\Console\AbstractCommand`` (or implement ``Supra\Core\DependencyInjection\ContainerAware``), read more about that in :doc:`../docs/di_container` chapter;
 * There is no limit on where you can store your commands or what namespace are you using. SiteSupra does not autoload commands, so you are free to choose your class structure.
 
-Basic console command can look like show below:
+Basic console command can look like shown below:
 
 .. code-block:: php
 

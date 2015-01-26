@@ -1,7 +1,7 @@
 .. index::
     single: Authentication
 
-How to enable authentication on frontend
+How to Enable Authentication on Frontend
 ========================================
 
-To be written
+.. TODO To be written

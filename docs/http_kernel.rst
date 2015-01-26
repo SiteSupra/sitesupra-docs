@@ -7,15 +7,19 @@ HTTP Kernel and Bootstrap Process
 
 .. note::
 
-    SiteSupra does not use `HttpKernel <https://github.com/symfony/HttpKernel>`_ (we had eight versions of SiteSupra before moving to Symfony, and some of Symfony concepts didn't suit our needs). Our implementation is still a bit incomplete, especially ``RequestStack`` and forwarding, so expect refactoring soon.
+    SiteSupra does not use `HttpKernel <https://github.com/symfony/HttpKernel>`_.
+    We had eight versions of SiteSupra before moving to Symfony. Unfortuantely, no all of the Symfony concepts do suit our needs well.
+    Our implementation is still a bit incomplete, especially ``RequestStack`` and forwarding, so expect refactoring soon.
 
 SiteSupra uses plain ``HttpFoundation`` component (see `documentation of HttpFoundation <https://github.com/symfony/HttpFoundation>`_
 and `HTTP requests in symfony <http://symfony.com/doc/current/book/http_fundamentals.html#requests-and-responses-in-symfony>`_
 for more information).
 
 SiteSupra mimics Symfony behaviour as close as possible - a ``Request`` object is created, every controller returns
-``Response`` (more on the controllers :doc:`here <controllers>`). Basically, request processing happens in the following
-order:
+``Response`` (read more on controllers :doc:`here <controllers>`).
+Basically, request processing happens in the following order:
+
+.. TODO review the below structure to ensure better readability
 
 * Web server hits entry point ``webroot/index.php``;
 * SiteSupra builds :doc:`container <di_container>`, ``buildContainer()`` is called;
@@ -36,5 +40,5 @@ order:
 * SiteSupra shuts down firing ``Supra::EVENT_SHUTDOWN_START`` and  ``Supra::EVENT_SHUTDOWN_END`` events and calls ``shutdown()`` method of all registered packages, thus allowing some late cleanup.
 
 As you can see, this process is pretty simple and transparent. Last thing to note must be a ``SupraJsonResponse`` class
-that is used throughout CMS backend for passing messages, ,warnings and errors to frontend in a common way. See class
-source learn more on the messaging process.
+that is used throughout CMS backend for passing messages, warnings, and errors to frontend in a common way.
+See the class source code to learn more on messaging process.

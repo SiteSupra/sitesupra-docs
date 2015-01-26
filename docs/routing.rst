@@ -26,8 +26,8 @@ Function ``locateConfigFile`` searches ``routes.yml`` in your package's ``Resour
 Common Example
 --------------
 
-Let's see some examples of routing definitions. The most standard simple would be ``SupraPackageFramework`` main routing
-file:
+Let's take a look at some routing definition examples.
+The most simple would be ``SupraPackageFramework`` main routing file:
 
 .. code-block:: yaml
     :linenos:

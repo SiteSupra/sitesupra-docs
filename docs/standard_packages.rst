@@ -19,14 +19,14 @@ throughout CMS backend.
 CmsAuthentication
 -----------------
 
-SiteSupra authentication layer is separated in CmsAuthentication bundle. It sets up SecurityContext and handles backend
+SiteSupra authentication layer is separated in CmsAuthentication bundle. It sets up ``SecurityContext11 and handles backend
 user authentication. It is not suitable for front-end user authentication.
 
 DebugBar
 --------
 
-Integrates `PHP DebugBar <http://phpdebugbar.com/>`_ into SiteSupra allowing you to monitor requests, their
- time lines, SQL queries, events, and much more. This package is active only when SiteSupra runs in debug mode.
+Integrates `PHP DebugBar <http://phpdebugbar.com/>`_ into SiteSupra allowing you to monitor requests, their time lines, SQL queries, events, and much more.
+This package is active only when SiteSupra runs in debug mode.
 
 Framework
 ---------

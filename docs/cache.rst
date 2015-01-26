@@ -5,12 +5,14 @@
 Cache
 =====
 
-SiteSupra does not provide any public caching interfaces. However, it has an internal cache system that you can use.
+SiteSupra does not provide any public caching interfaces. However, it has an internal cache system that you can use and benefit on.
 
 Cache Class
 -----------
 
 Cache class (``Supra\Core\Cache\Cache``, accessible by ``cache.cache`` service key or ``$container->getCache()`` method) exposes the following methods:
+
+.. TODO review the structure below to improve readability
 
 * ``fetch($prefix, $key, $default, $timestamp, $ttl, $respectDebug)`` fetches and probably stores value in the cache (if current value was not found). The parameters are explained below:
 

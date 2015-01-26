@@ -18,6 +18,8 @@ By default CLI loads with ``cli`` environment and debugging enabled.
 CLI Events
 ~~~~~~~~~~
 
+.. TODO unclear definition
+
 You can use events in your console application; you can use ``Symfony\Component\Console\Event\ConsoleEvent`` or
 ``Supra\Core\Event\ConsoleEvent`` (providing methods ``getData/setData``) for such cases. Currently, there's only one
 CLI-only event in SiteSupra,  ``Supra\Package\Framework\Event\FrameworkConsoleEvent::ASSETS_PUBLISH``, provided by
@@ -69,7 +71,7 @@ SupraPackageFramework
 assets:publish
 ++++++++++++++
 
-Each package can contain assets (in ``Resources\public`` directory). *Publishing* assets means that this directory will
+Each package can contain assets (in ``Resources\public`` directory). *Publishing* assets means that this directory
 will be symlinked (sorry, no hard copy option yet) into ``web/public/PACKAGE_NAME``. Supra cleans up package name, so
 assets from ``SupraPackageCms`` will we symlinked into ``web/public/cms``, enabling you to access them from the frontend.
 
@@ -77,7 +79,7 @@ cache:clear
 +++++++++++
 
 Clears SiteSupra cache. Cleans up all cache entries, if no argument is provided, or a particular segment. For more
-information SiteSupra cache see :doc:`cache`.
+information SiteSupra cache see :doc:`cache` chapter of this manual.
 
 cache:list
 ++++++++++

@@ -1,5 +1,7 @@
 .. index::
     single: Reference; Standard blocks
 
-Standard blocks
+Standard Blocks
 ==========================
+
+.. TODO write the article

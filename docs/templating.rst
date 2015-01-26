@@ -6,7 +6,7 @@ Templating
 
 SiteSupra uses `Twig <http://twig.sensiolabs.org/>`_ template engine. Nothing unusual, just few things worth to mention:
 
-* There's one Twig extension, called ``CmsExtension``, that provides functions for preparing and rendering CMS JS/CSS assets, and another one, called ``PageExtension``, that manages CMS-specific functions and tags (more on that later);
+* There's one Twig extension, called ``CmsExtension``, that provides functions for preparing CMS JS/CSS assets, and another one, called ``PageExtension``, that manages CMS-specific functions and tags (more on that later);
 * Views reside in package's ``Resource\view`` folders, just like in Symfony;
 * You can reference template inside a package and use shorthand syntax like ``{% extends 'SamplePackage:layouts/base.html.twig' %}``.
 
@@ -37,6 +37,8 @@ You can register a custom extension during package injection;
 
 PageExtension
 -------------
+
+.. TODO need to review the below block
 
 To explain ``PageExtension``, we need to discuss two things: ``PageExecutionContext`` and ``BlockExecutionContext`` (make
 sure you've read :doc:`concepts` first).

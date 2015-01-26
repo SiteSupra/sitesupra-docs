@@ -1,7 +1,7 @@
 .. index::
    single: Installation
 
-Installing and configuring SiteSupra
+Installing and Configuring SiteSupra
 ====================================
 
 SiteSupra is based on Symfony components and manages dependencies with composer. The installation process is pretty
@@ -22,10 +22,10 @@ Clone or checkout SiteSupra into your work folder.
 Configuring SiteSupra
 ---------------------
 
-Follow the next steps to configure SiteSupra on your computer:
+To configure SiteSupra on your computer follow the next steps :
 
 1.  Run ``composer update`` to update dependencies;
-2.  Set up web server permissions for ``storage`` folder (you can stick to plain old chmod 777 or use ACL approach as `Symfony <http://symfony.com/doc/current/book/installation.html#checking-symfony-application-configuration-and-setup>`_ does;
+2.  Set up web server permissions for ``storage`` folder (you can stick to plain old chmod 777 or use ACL approach as `Symfony <http://symfony.com/doc/current/book/installation.html#checking-symfony-application-configuration-and-setup>`_ does);
 3.  Copy ``supra/config.yml.example`` to ``supra/config.yml`` and provide database credentials;
 4.  Create database by running ``supra/cli.php doctrine:schema:update --force``;
 5.  Load initial fixtures by running ``supra/cli.php supra:bootstrap``;
