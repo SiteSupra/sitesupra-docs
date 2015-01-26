@@ -2,53 +2,53 @@
     single: Internals; Dependency injection
     single: Dependency injection
 
-Dependency injection
+Dependency Injection
 ====================
 
-Core concepts
+Core Concepts
 -------------
 
-SiteSupra DI layer is based on `Pimple <http://pimple.sensiolabs.org/>`_. If you're curious about what is DI (short of
-Dependency Injection) you can consult Wiki `here <http://en.wikipedia.org/wiki/Inversion_of_control>`__ and
-`here <http://en.wikipedia.org/wiki/Dependency_injection>`__, and, of course, read
+SiteSupra Dependency Injection layer or DI in short is based on `Pimple <http://pimple.sensiolabs.org/>`_. If you're curious about what is DI
+you can read `this <http://en.wikipedia.org/wiki/Inversion_of_control>`__ and
+`this <http://en.wikipedia.org/wiki/Dependency_injection>`__ Wiki articles. We also recommend read
 `Symfony's documentation <http://symfony.com/doc/current/book/service_container.html>`_ about basic DI principles.
 
 SiteSupra main container class is ``Supra\Core\DependencyInjection\Container``. It extends Pimple's
 `Container <https://github.com/silexphp/Pimple/blob/master/src/Pimple/Container.php>`_, implements SiteSupra's
-``Supra\Core\DependencyInjection\ContainerInterface``, implements some hard-code methods (remember, we're a CMS, and
-not a full-stack framework, some items like Doctrine or Cache are always present), and provides some parameter
+``Supra\Core\DependencyInjection\ContainerInterface``, implements some hard-coded methods (remember, we're a CMS, and
+not a full-stack framework, some items like Doctrine or Cache are always present), and provides parameters
 handling.
 
 .. note::
 
-    It's almost certain that we will drop hardcoded getters sometime later and build container definition on-the-fly the
+    It's almost certain that we will drop hard-coded getters later and build container definition on-the-fly in the
     same way Symfony does.
 
-Everything is simple, right? Last thing to note would be that any object implementing
+Everything is simple, right? Last but not least to note would be that any object implementing
 ``Supra\Core\DependencyInjection\Container\ContainerAware`` will be provided with ``Container`` on instantiation
 (calling setContainer).
 
-Container building process
+Container Building Process
 --------------------------
 
 .. note::
 
-    Dirty code: this is to be refactored soon, so check code from time to time.
+    The code will be refactored soon.
 
 SiteSupra core class (``Supra\Core\Supra``, extending ``Supra\Core\DependencyInjection\ContainerBuilder``) builds and
 returns ``Container`` object during call to ``buildContainer``. This is done in the following steps:
 
-* pre-setting some basic variables and objects (like directories, `HttpFoundation <https://github.com/symfony/HttpFoundation>`_ objects, :doc:`supra_cli`, and so on)
-* injecting packages (allowing to expose their basic configuration)
-* building configuration (there the configuration is being validated, default values set, container parameters are substituted and so on)
-* finishing configuration, when packages can override or extend config values of other packages
-* firing ``Supra::EVENT_CONTAINER_BUILD_COMPLETE`` event
+* Pre-setting some basic variables and objects (like directories, `HttpFoundation <https://github.com/symfony/HttpFoundation>`_ objects, :doc:`supra_cli`, and so on);
+* Injecting packages (allowing to expose their basic configuration);
+* Building configuration (there the configuration is being validated, default values set, container parameters are substituted, and so on);
+* Finishing configuration when packages can override or extend config values of other packages;
+* Firing ``Supra::EVENT_CONTAINER_BUILD_COMPLETE`` event.
 
-Package integration and two-pass container building
+Package Integration and Two-pass Container Building
 ---------------------------------------------------
 
 First of all, a package needs to be registered. This is done by overriding ``registerPackages`` in ``SupraApplication``
-class (located in ``supra/SupraApplication.php``). This method simply returns array of package instances, like so:
+class (located in ``supra/SupraApplication.php``). This method simply returns array of package instances, like the below:
 
 .. code-block:: php
     :linenos:
@@ -72,22 +72,21 @@ class (located in ``supra/SupraApplication.php``). This method simply returns ar
         }
     }
 
-Each package must extend ``Supra\Core\Package\AbstractSupraPackage``. Then, you can override the following method to
+Each package must extend ``Supra\Core\Package\AbstractSupraPackage``. You can override the following method to
 to alter SiteSupra behavior:
 
-* ``boot()`` - this method will be called during SiteSupra boot, see :doc:`http_kernel`
-* ``inject(ContainerInterface $container)`` - this method will be called during Container building, in package injection phase (see above)
-* ``finish(ContainerInterface $container)`` - this method will be called finishing Container build, after the configuration is processed
-* ``shutdown()`` - this method will be called during SiteSupra shutdown, see :doc:`http_kernel`
+* ``boot()`` - this method will be called during SiteSupra boot, see :doc:`http_kernel`;
+* ``inject(ContainerInterface $container)`` - this method will be called during Container building in package injection phase (see above);
+* ``finish(ContainerInterface $container)`` - this method will be called finishing Container build after the configuration is processed;
+* ``shutdown()`` - this method will be called during SiteSupra shutdown, see :doc:`http_kernel`.
 
-Let's discuss these methods by example.
+The above methods are described below.
 
 
-Package configuration
+Package Configuration
 ---------------------
 
-As mentioned above, package configuration may occur in two phases, injection and finishing phase. Let's look at these
-methods separately, starting from ``inject()``:
+As mentioned above package configuration may occur in two phases - injection phases and finishing phase. Let's look at both of them starting from ``inject()``:
 
 .. code-block:: php
     :linenos:
@@ -109,18 +108,18 @@ methods separately, starting from ``inject()``:
         }
     }
 
-The most important call would be ``$this->loadConfiguration()`` (line 5). This methods load configuration file (by
-default using ``Resources/config/config.yml``, but you can provide custom file name as second parameter.
+The most important call would be ``$this->loadConfiguration()`` (line 5). This method loads configuration file (by
+default it is ``Resources/config/config.yml``). To load your own configuration pass the file name to the method as second parameter .
 
 This call parses config file, processes the configuration using package configuration definition (more on that on
 `Symfony configuration component article <http://symfony.com/doc/current/components/config/definition.html>`_, and stores
 the values for further processing.
 
-Later, you can access already defined services (as on ``line 7``, which though is not a very good approach since it
-instantiates the service), add your own service definitions (``lines 9-11``) and access container parameters (``line 13``).
+Later you can access already defined services (see line ``line 7``, which though is not a very good approach since it
+instantiates the service), add your own service definitions (``lines 9-11``), and access container parameters (``line 13``).
 
 Each package has it's own configuration definition. Concrete configuration object is created during call to ``getConfiguration()``
-method; by default, if we have package named ``SupraPackageFooBar`` in namespace ``Com\Package\FooBar``, then it will search
+method. By default, if there is a package named ``SupraPackageFooBar`` in namespace ``Com\Package\FooBar``, then the method will search
 for configuration definition ``SupraPackageFooBarConfiguration`` in namespace ``Com\Package\FooBar\Configuration``. Of
 course, you can always override you package's method ``getConfiguration()`` and implement your own logic.
 
@@ -173,11 +172,11 @@ on official Symfony documentation. Let's take configuration of ``SupraPackageFra
         }
     }
 
-Root node (``line 14``) must be the same as you package name. The rest of configuration definition is standard for
+Root node (``line 14``) must match your package name. The rest of configuration definition is standard for
 Symfony-based applications (``lines 24-38``), except for call of ``->append($this->getServicesDefinition())``, which is
 inherited from ``AbstractPackageConfiguration`` and enables parsing of ``services`` section of your configuration file.
 
-Package configuration files are simple yml files, as shown below:
+Package configuration files are simple yml files as shown below:
 
 .. code-block:: yaml
     :linenos:
@@ -219,11 +218,11 @@ Package configuration files are simple yml files, as shown below:
             - updated_at
             - lock
 
-``Lines 1-6`` define services. Key is service ID, 'class' defines class and 'parameters' section enables setter injection
+``Lines 1-6`` define services. Key is service ID, 'class' defines class name and 'parameters' section enables setter injection
 (note that you can inject other services referenced with '@' as shown in ``line 4``). Setter injection is not yet supported.
 
-First level keys will become container parameters, prefixed with package name. In the example above, you'll have
-container parameters 'framework.doctrine' and 'framework.doctrine_audit', and you can call something like
+First level keys will become container parameters prefixed with package name. In the example above,
+container parameters are 'framework.doctrine' and 'framework.doctrine_audit', and you can call something like
 ``$container->getParameter('framework.doctrine_audit')['entities']`` later in your code.
 
 You may also reference any parameter using percent notation (``%parameter.name%``). In the example above, ``line 18``
@@ -255,15 +254,15 @@ can look like so:
 
 So, summing up:
 
-1. you define your configuration in ``inject()`` method
-2. container processes your configuration and merges it
-3. you retrieve processed values from container in ``finish()`` method and define your services
-4. resulting container is available throughout SiteSupra
+1. You define your configuration in ``inject()`` method;
+2. Container processes your configuration and merges it;
+3. You retrieve processed values from container in ``finish()`` method and define your services;
+4. Resulting container is available throughout SiteSupra.
 
-Main SiteSupra configuration file (config.yml)
+Main SiteSupra Configuration File (config.yml)
 ----------------------------------------------
 
-Default SiteSupra config file, found in ``supra/config.yml.example``, looks like following:
+Default SiteSupra configuration file ``supra/config.yml.example``:
 
 .. code-block:: yaml
     :linenos:
@@ -290,51 +289,51 @@ Default SiteSupra config file, found in ``supra/config.yml.example``, looks like
 
 Top-level keys correspond to package names, corresponding values are deep-merged with default values resolved in injection
 phase. Here you can see how default 'doctrine.configuration' values are merged with defaults from SupraPackageFramework;
-any part of configuration defined can be overridden.
+any part of configuration can be overridden.
 
-Container parameter handling, parameter substitution
+Container Parameter Handling, Parameter Substitution
 ----------------------------------------------------
 
 *Parameters* are SiteSupra-specific extension to Pimple. Basically they represent simple key-value storage (with all
-the getters, setters and so on - consult ``Supra\Core\DependencyInjection\Container`` for more reference. However, some
-methods are worth to be noted separately:
+the getters and setters. Refer to ``Supra\Core\DependencyInjection\Container`` for more information. However, some
+of the methods are worth to be noted separately:
 
-* ``replaceParameters``, that searches array of data, and replaces all parameters, enclosed in percent signs (like %foo.bar%) to their respective values
-* ``replaceParametersScalar``, that replaces all parameters, enclosed in percent signs (like %foo.bar%) to their respective values in a scalar variable (string)
-* ``getParameter``, that threats dots inside parameter name as internal array keys (thus allowing you to call ``$container->getParameter('foo.bar.buz.example')`` instead of ``$container->getParameter('foo.bar')['buz']['example']``)
+* ``replaceParameters`` searches array of data and replaces all parameters enclosed in percent signs (like %foo.bar%) to their respective values;
+* ``replaceParametersScalar`` replaces all parameters enclosed in percent signs (like %foo.bar%) to their respective values in a scalar variable (string);
+* ``getParameter`` threads dots inside parameter name as internal array keys (thus allowing you to call ``$container->getParameter('foo.bar.buz.example')`` instead of ``$container->getParameter('foo.bar')['buz']['example']``).
 
-Standard container parameters
+Standard Container Parameters
 -----------------------------
 
-Some standard container parameters that can help you in development process are listed below.
+Standard container parameters that can help you in development process are listed below.
 
 Directories
 ~~~~~~~~~~~
 
 There is a number of container parameters reflecting SiteSupra directory structure:
 
-* ``directories.project_root`` for project root folder (with ``composer.json`` and other core files)
-* ``directories.supra_root`` for directory where ``Supra.php`` and ``config.yml`` reside
-* ``directories.storage`` for storage folder
-* ``directories.cache`` for cache folder (inside storage root)
-* ``directories.web`` for webroot (this is where SiteSupra entry point, ``index.php``, is)
-* ``directories.public`` for asset root, ``Resources\public`` folders of every package are symlinked there
+* ``directories.project_root`` for project root folder (with ``composer.json`` and other core files);
+* ``directories.supra_root`` for directory where ``Supra.php`` and ``config.yml`` reside;
+* ``directories.storage`` for storage folder;
+* ``directories.cache`` for cache folder (inside storage root);
+* ``directories.web`` for webroot (this is where SiteSupra entry point, ``index.php``, is);
+* ``directories.public`` for asset root, ``Resources\public`` folders of every package are symlinked there.
 
-Environments and debugging
+Environments and Debugging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Some parameters are affected by current :doc:`development settings <development_and_production>`:
 
-* ``environment`` show current environment - currently on of ``cli``, ``prod`` or ``dev``
-* ``debug`` shows current debug state - either ``true`` of ``false``
+* ``environment`` shows current environment - currently on of ``cli``, ``prod``, or ``dev``;
+* ``debug`` shows current debug state - either ``true`` or ``false``.
 
-Service definition
+Service Definition
 ------------------
 
-Each package, having ``->addServiceDefinition()`` in their configuration, can define services in their config file under
-section ``services``.
+Adding ``->addServiceDefinition()`` to package configuration will allow that package to define services.
+Service definition has to reside under section ``services`` in configuration file.
 
-The simplest service definition contains service id and class name:
+A simple service definition contains service id and class name:
 
 .. code-block:: yaml
     :linenos:
@@ -343,7 +342,7 @@ The simplest service definition contains service id and class name:
         locale.manager:
             class: \Supra\Core\Locale\LocaleManager
 
-You can provide constructor arguments as an array:
+you can provide constructor arguments as an array:
 
 .. code-block:: yaml
     :linenos:
@@ -353,7 +352,7 @@ You can provide constructor arguments as an array:
             class: \Supra\Core\Doctrine\Subscriber\TableNamePrefixer
             parameters: ['su_', '']
 
-Or even use container parameters as arguments:
+or even use container parameters as arguments:
 
 .. code-block:: yaml
     :linenos:
@@ -363,7 +362,7 @@ Or even use container parameters as arguments:
             class: \Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage
             parameters: [[], "@supra.framework.session_handler_doctrine"]
 
-Unfortunately, caller injections are not possible with SiteSupra yet, but still you can use common Pimple's approach
+Unfortunately, caller injections are not possible with SiteSupra yet. But still you can use common Pimple's approach
 during ``inject()`` or ``finish()``:
 
 .. code-block:: php

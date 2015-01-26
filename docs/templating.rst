@@ -4,13 +4,13 @@
 Templating
 ==========
 
-SiteSupra uses `Twig <http://twig.sensiolabs.org/>`_ for templating. Nothing unusual, just some things are worth mentioning:
+SiteSupra uses `Twig <http://twig.sensiolabs.org/>`_ template engine. Nothing unusual, just few things worth to mention:
 
-* there's one Twig extension, ``CmsExtension``, that provides functions used to prepare CMS JS/CSS assets, and another one, called ``PageExtension``, that manages CMS-specific functions and tags (more on that later)
-* views reside in package's ``Resource\view`` folders, just like with Symfony
-* you can reference template inside a package, you can use shorthand syntax like ``{% extends 'SamplePackage:layouts/base.html.twig' %}``
+* There's one Twig extension, called ``CmsExtension``, that provides functions for preparing and rendering CMS JS/CSS assets, and another one, called ``PageExtension``, that manages CMS-specific functions and tags (more on that later);
+* Views reside in package's ``Resource\view`` folders, just like in Symfony;
+* You can reference template inside a package and use shorthand syntax like ``{% extends 'SamplePackage:layouts/base.html.twig' %}``.
 
-If you need to reference and render template, you can always access Twig environment by calling ``$container->getTemplating()``,
+To reference and render a template you can always access Twig environment by calling ``$container->getTemplating()``
 or call ``renderResponse`` from your controller (package defaults to current package here):
 
 .. code-block:: php
@@ -23,7 +23,7 @@ or call ``renderResponse`` from your controller (package defaults to current pac
         return $this->renderResponse('index.html.twig');
     }
 
-If you need to register a custom extension, you can do it during package injection;
+You can register a custom extension during package injection;
 
 .. code-block:: php
     :linenos:
@@ -49,15 +49,15 @@ contain a ``Request`` object (plain ``Request`` for Blocks and ``PageRequest`` f
 
     As other SiteSupra internal features, this is likely to change in the future.
 
-This extension defines one filter (``decorate``, that works with internal ``HtmlTag`` instances), and a lot of functions,
+This extension defines one filter, called ``decorate`` that works with internal ``HtmlTag`` instances, and a few functions
 listed below:
 
-* ``collection()``, and ``list()`` - resolve property to a collection, example would be writing ``{% for item in collection(property('image', 'image')) %}``
-* ``set()`` - resolves property to a set
-* ``property()`` - fetches single property from a Block or Page
-* ``isPropertyEmpty()`` - checks if property value is empty
-* ``placeHolder()`` - defines a placeholder (see :doc:`blocks_and_editables` and :doc:`concepts` for more information).
+* ``collection()``, and ``list()`` resolve property to a collection, example would be writing ``{% for item in collection(property('image', 'image')) %}``;
+* ``set()`` resolves property to a set;
+* ``property()`` fetches single property from a Block or Page;
+* ``isPropertyEmpty()`` checks if property value is empty;
+* ``placeHolder()`` defines a placeholder (see :doc:`blocks_and_editables` and :doc:`concepts` for more information).
 
-If you take a look on the source of that extension, you will see that every function is based on a custom ``node_class``;
-this facilitates the process of dynamic creation of block properties - when template is parsed, ``BlockPropertyNodeVisitor``
-creates block properties on-the-fly.
+Every function in ``PageExtension`` is based on a custom ``node_class``.
+This facilitates the process of dynamic creation of block properties when template is parsed.
+``BlockPropertyNodeVisitor`` creates block properties on-the-fly.

@@ -7,23 +7,22 @@ Cache
 
 SiteSupra does not provide any public caching interfaces. However, it has an internal cache system that you can use.
 
-Cache class
+Cache Class
 -----------
 
-Cache class (``Supra\Core\Cache\Cache``, accessible by ``cache.cache`` service key or ``$container->getCache()`` method),
-exposes the following methods:
+Cache class (``Supra\Core\Cache\Cache``, accessible by ``cache.cache`` service key or ``$container->getCache()`` method) exposes the following methods:
 
 * ``fetch($prefix, $key, $default, $timestamp, $ttl, $respectDebug)`` fetches and probably stores value in the cache (if current value was not found). The parameters are explained below:
 
-  * ``$prefix`` and ``$key`` parameters are quite self-explanatory
-  * ``$default`` value can be a scalar or a callable (checked by `is_callable <http://php.net/is_callable>`_), which is being called only on cache miss
-  * ``$timestamp`` is a last modification timestamp, allowing you to refresh the cache - very handy for storing and combining assets
-  * ``$ttl`` is a time to live
-  * ``$respectDebug`` - if you set this to ``true``, cache is always refreshed in :doc:`development environment <development_and_production>`
+  * ``$prefix`` and ``$key`` parameters are quite self-explanatory;
+  * ``$default`` value can be a scalar or a callable (checked by `is_callable <http://php.net/is_callable>`_), which is being called only on cache miss;
+  * ``$timestamp`` is a last modification timestamp allowing you to refresh the cache. It's very handy for storing and combining assets;
+  * ``$ttl`` is a time to live value;
+  * ``$respectDebug`` turns cache off :doc:`development environment <development_and_production>` when set to ``true``. Basically, the cache will still work, but the values in there will overwritten with every page request.
 
-* ``store($prefix, $key, $value, $timestamp, $ttl)`` - directly proxies data to storage driver. If ``$value`` is callable, it is invoked
-* ``delete($prefix, $key)`` deletes value from driver
-* ``clear($prefix)`` deletes all values on particular prefix
+* ``store($prefix, $key, $value, $timestamp, $ttl)`` directly proxies data to storage driver. If ``$value`` is callable, it is invoked;
+* ``delete($prefix, $key)`` deletes value from driver;
+* ``clear($prefix)`` deletes all values for particular prefix;
 
 We've tried to make the cache as simple as possible, so the common usage pattern with callback looks like the following:
 
@@ -42,8 +41,8 @@ We've tried to make the cache as simple as possible, so the common usage pattern
 Doctrine Wrapper
 ----------------
 
-Some libraries can use `Doctrine Cache <http://doctrine-orm.readthedocs.org/en/latest/reference/caching.html>`_ as a cache
-layer. SiteSupra provides wrapper over it's native cache, ``DoctrineCacheWrapper``, which you can use in the following way:
+Some libraries can use `Doctrine Cache <http://doctrine-orm.readthedocs.org/en/latest/reference/caching.html>`_ as a cache layer.
+SiteSupra provides wrapper over it's native cache, ``DoctrineCacheWrapper``, which you can use in the following way:
 
 .. code-block:: php
     :linenos:
@@ -58,13 +57,16 @@ layer. SiteSupra provides wrapper over it's native cache, ``DoctrineCacheWrapper
     $wrapper->setPrefix('supra_native_prefix');
     $wrapper->setSuffix('doctrine_cache_suffix');
 
-    //and now you can use $wrapper anywhere where instance of CacheProvider is required. Supra will respect ``prefix``
-    //that you have set, and Doctrine will use ``suffix``
+    // now you can use $wrapper anywhere in your code
+    // where instance of CacheProvider is required.
+    // Supra will respect ``prefix`` that you have set,
+    // and Doctrine will use ``suffix``
 
-Cache drivers and current implementation
+Cache Drivers and Current Implementation
 ----------------------------------------
 
-Currently there is only one cache driver implemented in Supra - ``File``, which writes into ``storage/cache`` folder,
-creating separate subfolders for each ``prefix`` you define. Also, there are some cache-specific :doc:`CLI commands <supra_cli>`,
-you should check them also. More cache drivers to come soon, but now you can write your own just by implementing
-``Supra\Core\Cache\Driver\DriverInterface`` interface.
+SiteSupra has only one cache driver implemented at the moment. The driver called ``File`` stores cached data under ``storage/cache`` folder.
+The driver creates separate sub-folders for each ``prefix`` you define.
+There are some cache-specific :doc:`CLI commands <supra_cli>` available for cache data management.
+
+More cache drivers to come soon. You can always write your own driver just by implementing ``Supra\Core\Cache\Driver\DriverInterface`` interface.

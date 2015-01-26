@@ -6,10 +6,10 @@
 Routing
 =======
 
-Loading routes
+Loading Routes
 --------------
 
-SiteSupra routing is heavily based on Symfony routing component and uses very similar syntax. However, there are some
+SiteSupra routing is heavily based on Symfony's routing component and uses very similar syntax. However, there are some
 minor differences. For example, you have to load all your routing files manually in your package's ``inject()`` method:
 
 .. code-block:: php
@@ -23,11 +23,11 @@ minor differences. For example, you have to load all your routing files manually
 
 Function ``locateConfigFile`` searches ``routes.yml`` in your package's ``Resources\config`` directory.
 
-Common example
+Common Example
 --------------
 
 Let's see some examples of routing definitions. The most standard simple would be ``SupraPackageFramework`` main routing
-file;
+file:
 
 .. code-block:: yaml
     :linenos:
@@ -46,24 +46,24 @@ file;
             pattern:        /_framework_internal/routes
             controller:     Framework:Routing:export
 
-``configuration`` section, seen on ``line 1``, defines global ``prefix`` and ``defaults`` (default parameter values)
-keys. ``prefix`` must be set, even with default ``~`` value.
+``configuration`` section at ``line 1`` defines global ``prefix`` and ``defaults`` (default parameter values)
+keys. ``prefix`` must be explicitly defined even with default ``~`` value.
 
 ``routes`` section, starting from ``line 3``, defines actual routes. Each route may contain the following fields:
 
-* ``pattern``, defining actual URI that will trigger the route
-* ``controller``, specifying the controller (in the example above, ``Framework:Combo:combo`` resolves into ``SupraPackageFramework`` |rarr| ``ComboController`` |rarr| ``comboAction`` (just like Symfony does!)
-* ``filters``, defining Symfony route filters
-* ``requirements``, where you can specify per-parameter regex requirements
-* ``defaults``, providing default parameter values
-* ``options``, currently supporting only ``frontend`` key
+* ``pattern`` defines actual URI that will trigger the route;
+* ``controller`` specifies the controller (in the example above, ``Framework:Combo:combo`` resolves into ``SupraPackageFramework`` |rarr| ``ComboController`` |rarr| ``comboAction`` (just like Symfony does!);
+* ``filters`` defines Symfony route filters;
+* ``requirements`` here you can specify per-parameter regex requirements;
+* ``defaults`` provides default parameter values;
+* ``options`` at the moment supports ``frontend`` key only.
 
 where only ``pattern`` and ``controller`` are required.
 
 .. tip::
-    As SiteSupra's routing is based on `Symfony Routing component <http://symfony.com/doc/current/components/routing/introduction.html>`_, everything written in Symfony documentation applies also to SiteSupra - we did not reinvent the wheel here.
+    Due to the fact SiteSupra's routing is based on `Symfony Routing component <http://symfony.com/doc/current/components/routing/introduction.html>`_, everything written in Symfony documentation applies to SiteSupra as well - we did not reinvent the wheel here.
 
-Container parameters and javascript
+Container Parameters and JavaScript
 -----------------------------------
 
 Let's see a bit more complicated example from ``SupraPackageCms``:
@@ -80,8 +80,8 @@ Let's see a bit more complicated example from ``SupraPackageCms``:
             options:
                 frontend:       true
 
-First of all, you can use container parameters (in ``%container.parameter.name%`` form) in your route ``pattern``;
-secondly, you can provide ``frontend: true`` option and use in Javascript like this:
+First of all, you can use container parameters (in ``%container.parameter.name%`` form) in your route ``pattern``.
+Secondly, you can provide ``frontend: true`` option and use in Javascript like this:
 
 .. code-block:: javascript
     :linenos:

@@ -1,4 +1,4 @@
-Why another CMS system
+Why Another CMS System
 ======================
 
 

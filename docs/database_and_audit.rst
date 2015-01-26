@@ -6,13 +6,16 @@
 Database (Doctrine 2) and EntityAudit
 =====================================
 
-SiteSupra uses `Doctrine ORM <http://www.doctrine-project.org/>`_ for database operations (a nice introduction is
-available also in `Symfony docs <http://symfony.com/doc/current/book/doctrine.html>`_). However, SiteSupra supports
-content versioning, which is implemented using `EntityAudit library <https://github.com/simplethings/EntityAudit>`_.
-This implies some interesting features, such as abstract entities, custom id generation and some other things that will
-be covered in this article.
+SiteSupra uses `Doctrine ORM <http://www.doctrine-project.org/>`_ for database operations (a nice introduction to Doctrine is
+available at `Symfony docs <http://symfony.com/doc/current/book/doctrine.html>`_).
 
-Doctrine configuration
+..
+  However, SiteSupra supports content versioning, which is implemented using `EntityAudit library <https://github.com/simplethings/EntityAudit>`_.
+
+  This implies some interesting features, such as abstract entities, custom id generation and some other things that will
+  be covered in this article.
+
+Doctrine Configuration
 ----------------------
 
 In most cases you do not need to configure anything but set up database credentials in ``supra/config.yml``. Commonly,
@@ -32,7 +35,7 @@ you have to override only ``framework.doctrine`` parameter:
 
 
 If you need auditing for your project issues, you will have to add them to framework.doctrine_audit.entities, along with
-default values, like so:
+default values, like shown below:
 
 .. code-block:: yaml
     :linenos:
@@ -61,7 +64,7 @@ default values, like so:
                 Supra\Package\Cms\Entity\ReferencedElement\ReferencedElementAbstract
                 Package\MyCustomPackage\Entity\CustomAuditedEntity
 
-However, this will override previous values and possibly mess other packages; so, a better approach would we adding them
+However, this will override previous values and possibly mess other packages. Thus, a better approach would we adding them
 during package injection phase:
 
 .. code-block:: php
@@ -86,11 +89,10 @@ during package injection phase:
 
 Basically, you can override any package configuration by using ``getConfigurationSection()`` and ``setConfigurationSection()``.
 
-CLI commands
+CLI Commands
 ------------
 
-Please consult :doc:`supra_cli` for reference. Basically, all Doctrine commands known by Symfony are available - like
-``doctrine:schema:update`` and so on.
+Please refer to SiteSupra :doc:`supra_cli` for more information. Basically, all Doctrine commands known by Symfony are available via SiteSupra CLI.
 
 Standard event listeners
 ------------------------
@@ -126,12 +128,12 @@ section looks like below:
         supra.doctrine.event_subscriber.nested_set_listener:
             class: \Supra\Core\NestedSet\Listener\NestedSetListener
 
-They serve the following purposes:
+They serve for the following purposes:
 
-* ``TableNamePrefixer`` adds prefixes to SiteSupra database tables (currently not-changeable, default ``su_``)
-* ``DetachedDiscriminatorHandler`` is internal SiteSupra feature. Quite probably we'll tune it up and document later
-* ``TimestampableListener`` listens to changes in entities implementing ``Supra\Package\Cms\Entity\Abstraction\TimestampableInterface`` and calls ``setCreationTime()`` and ``setModificationTime`` if needed
-* ``NestedSetListener`` handles changes in SiteSupra's custom NestedSet implementation
+* ``TableNamePrefixer`` adds prefixes to SiteSupra database tables (currently not-changeable, default ``su_``);
+* ``DetachedDiscriminatorHandler`` is internal SiteSupra feature. Quite probably we'll tune it up and document later;
+* ``TimestampableListener`` listens to changes in entities implementing ``Supra\Package\Cms\Entity\Abstraction\TimestampableInterface``, calls ``setCreationTime()`` and ``setModificationTime`` if needed;
+* ``NestedSetListener`` handles changes in SiteSupra's NestedSet implementation.
 
 If some other package must add other event subscribers, this can be done by overriding SupraPackageFramework configuration
 like it is done in ``SupraPackageCms``:
@@ -160,32 +162,31 @@ like it is done in ``SupraPackageCms``:
         $container->getApplication()->setConfigurationSection('framework', $frameworkConfiguration);
     }
 
-So again - feel free to alter any configurations during package injection phase (since actual entity managers and
+You can freely alter any configurations during package injection phase (since actual entity managers and
 subscribers are set up only in finishing phase).
 
-Internal entities and SupraId
+Internal Entities and SupraId
 -----------------------------
 
-Doctrine, by itself, is a very sensitive system. For example, it does not like when we're trying to persist entity that
-already has id, or restore entities with pre-set foreign keys, and so on - but SiteSupra's versioning, based on
+Doctrine, by itself, is a very sensitive system. For example, it does not like when you are trying to persist entity that
+already has id or restore entities with pre-set foreign keys, and so on. However, SiteSupra's versioning, based on
 EntityAudit, does exactly that! Therefore, we are using:
 
-* a custom type, called ``supraId20`` (use ``@Column(type="supraId20")``), that's currently just a 20 letter string
-* a custom base entity ``Supra\Package\Cms\Entity\Abstraction\Entity``, which is a ``@MappedSuperclass``, and provides base methods like ``regenerateId``, ``__clone`` etc
+* A custom type, called ``supraId20`` (use ``@Column(type="supraId20")``), that's currently just a 20 letter string;
+* A custom base entity ``Supra\Package\Cms\Entity\Abstraction\Entity``, which is a ``@MappedSuperclass``, and provides base methods like ``regenerateId``, ``__clone`` etc.
 
-SiteSupra Id contains twenty symbols, and looks like "018dusx9903wosockckg", where:
+SiteSupra Id contains twenty symbols and looks like "018dusx9903wosockckg", where:
 
-* first 9 symbols contain timestamp, converted to base36 (to be honest, we do not use standard unix timestamps, out base date is 16 Dec 2011, 11:33:05 - that's when supraId was introduced)
-* second two symbols contains internal counter of entities persisted in current session
-* trailing 9 symbols are just a randomly generates suffix
-
+* First 9 symbols contain timestamp converted to base36 (to be honest, we do not use standard unix timestamps, our base date is 16 Dec 2011, 11:33:05 - that's when supraId was introduced);
+* Next two symbols contains internal counter of entities persisted in current session;
+* Trailing 9 symbols are just a randomly generates suffix.
 
 .. note::
 
     This is expected to be refactored to @GeneratedValue(strategy="CUSTOM") and @CustomIdGenerator(class="...") soon
 
-EntityAudit and versioning
+EntityAudit and Versioning
 --------------------------
 
-SiteSupra's versioning is almost completely based on EntityAudit library - see `respective documentation <https://github.com/simplethings/EntityAudit>`_.
-We are not overriding anything there, so this should be enough if you need to implement auditing of your project entities.
+SiteSupra's versioning is almost completely based on EntityAudit library. For more inforamtion refer to `respective documentation <https://github.com/simplethings/EntityAudit>`_.
+We do not override anything there, so this should be enough if you need to implement auditing of your project entities.

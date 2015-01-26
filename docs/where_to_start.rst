@@ -1,7 +1,7 @@
 .. index::
    single: Quickstart
 
-Where to start
+Where to Start
 ==================================
 
 - SiteSupra at a glance

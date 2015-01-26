@@ -2,20 +2,20 @@
     single: CLI
     single: Tools; CLI
 
-Command line interface
+Command Line Interface
 ======================
 
-General concepts
+General Concepts
 ----------------
 
-Basically, SiteSupra uses `Symfony console component <http://symfony.com/doc/current/components/console/introduction.html>`_ for console operations. `Boris <https://github.com/d11wtq/boris>`_ is used for REPL shell.
+SiteSupra uses `Symfony console component <http://symfony.com/doc/current/components/console/introduction.html>`_ for console operations. `Boris <https://github.com/d11wtq/boris>`_ is used for REPL shell.
 
-The main console executable is ``supra/cli.php``. Running it with no parameters (like ``php supra/cli.php``) will give
+The main console executable is ``supra/cli.php``. Running it without parameters (like ``php supra/cli.php``) will give
 you a list of all available commands.
 
-CLI by default loads with ``cli`` environment and debugging enabled.
+By default CLI loads with ``cli`` environment and debugging enabled.
 
-CLI events
+CLI Events
 ~~~~~~~~~~
 
 You can use events in your console application; you can use ``Symfony\Component\Console\Event\ConsoleEvent`` or
@@ -26,14 +26,14 @@ non-standard assets to your webroot (to simplify things, you can implement ``Sup
 for your listener and use ``webRoot`` and ``webRootPublic`` keys of ``$assetsPublishEvent->getData()`` to determine copy
 locations).
 
-Core commands
+Core Commands
 -------------
 
 SiteSupra does not provide any built-in commands itself; on a plain installation you have ``help`` and ``list`` commands,
 that are standard for Symfony Console. Only two argumens (``--env``, or ``-e``, for environment, defaulting to ``cli``,
 and ``--debug``, defaulting to true), are present.
 
-Package commands
+Package Commands
 ----------------
 
 SupraPackageCms
@@ -69,7 +69,7 @@ SupraPackageFramework
 assets:publish
 ++++++++++++++
 
-Each package can contain assets (in ``Resources\public`` directory).  *Publishing* assets means that this directory will
+Each package can contain assets (in ``Resources\public`` directory). *Publishing* assets means that this directory will
 will be symlinked (sorry, no hard copy option yet) into ``web/public/PACKAGE_NAME``. Supra cleans up package name, so
 assets from ``SupraPackageCms`` will we symlinked into ``web/public/cms``, enabling you to access them from the frontend.
 
@@ -77,12 +77,12 @@ cache:clear
 +++++++++++
 
 Clears SiteSupra cache. Cleans up all cache entries, if no argument is provided, or a particular segment. For more
-information on how SiteSura cache works, see :doc:`cache`.
+information SiteSupra cache see :doc:`cache`.
 
 cache:list
 ++++++++++
 
-Shows info about SiteSupra cache and segments, like below:
+Shows info about SiteSupra cache and segments:
 
 .. code-block:: text
 
@@ -101,7 +101,7 @@ Shows info about SiteSupra cache and segments, like below:
 container:dump
 ++++++++++++++
 
-Dumps information about :doc:`container <di_container>` parameters and services, like so:
+Dumps information about :doc:`container <di_container>` parameters and services:
 
 .. code-block:: text
 
@@ -154,12 +154,12 @@ The following commands are directly mapped the their `Doctrine counterparts <htt
 * doctrine:schema:drop
 * doctrine:schema:update
 
-Please consult `Doctrine documentation <http://doctrine-orm.readthedocs.org/en/latest/reference/tools.html>`_ if you need help on this.
+Please refer to `Doctrine documentation <http://doctrine-orm.readthedocs.org/en/latest/reference/tools.html>`_ should you need help on that.
 
 framework:routing:list
 ++++++++++++++++++++++
 
-Displays all registered routes, patterns, resulting controller and whether the route is exported to fronted, like so:
+Displays all registered routes, patterns, resulting controller, and whether the route is exported to fronted:
 
 .. code-block:: text
 
@@ -178,14 +178,14 @@ Displays all registered routes, patterns, resulting controller and whether the r
 supra:bootstrap
 +++++++++++++++
 
-Creates default user (username admin, password admin), and loads some initial templates so you can access
+Creates default user (username admin, password admin) and loads some initial templates so you can access
 backend and create new pages.
 
 supra:shell
 +++++++++++
 
 Launches REPL shell, with pre-set ``$container`` and ``$application`` variables. You can play around with some SiteSupra
-code without having debug controllers, like so:
+code without having debug controllers:
 
 .. code-block:: text
 
@@ -198,9 +198,9 @@ supra:nested_set:check
 
 .. warning::
 
-    Warning! Dragons ahead! This is internal feature, use it on your own risk!
+    Warning! There is a risk of losing your data. Please don't forget to backup your database prior to running the command.
 
-Since SiteSupra uses custom NestedSet implementation, it sometimes needs to be fixed. This command tries is best to do so.
+SiteSupra uses custom NestedSet implementation. It's quite stable and almost bulletproof, although may need in repair from time to time.
 
 
 Writing your own Command

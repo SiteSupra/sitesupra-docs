@@ -6,7 +6,7 @@
 .. index::
    single: Index
 
-Welcome to SiteSupra's documentation!
+Welcome to SiteSupra's Documentation!
 =====================================
 
 About SiteSupra:
@@ -27,7 +27,7 @@ Installation:
    docs/requirements
    docs/installation
 
-Quick start:
+Quick Start:
 ------------
 
 SiteSupra is open source PHP framework and extremely powerful web site
@@ -40,7 +40,7 @@ builder bundled with user-friendly CMS.
    docs/concepts
    docs/installation
 
-Developer's guide:
+Developer's Guide:
 ------------------
 
 .. toctree::
@@ -50,7 +50,6 @@ Developer's guide:
    docs/installation
    docs/concepts
    docs/standard_packages
-   docs/adding_a_page
    docs/http_kernel
    docs/di_container
    docs/supra_cli
@@ -64,7 +63,7 @@ Developer's guide:
    docs/development_and_production
    docs/security
 
-Cookbook articles:
+Cookbook Articles:
 ------------------
 
 .. toctree::
@@ -89,7 +88,7 @@ Reference:
 
    reference/blocks
 
-Indices and tables
+Indices and Tables
 ==================
 
 ..

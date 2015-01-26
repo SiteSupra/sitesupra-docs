@@ -2,23 +2,19 @@
     single: Block; Creating new block
     single: Cookbook; Creating new block
 
-Creating custom Block
+Creating Custom Block
 =====================
 
-This tutorial will help you to create simple block with manageable HTML content.
+This tutorial will help you to create a simple block with manageable HTML content.
 
 .. note::
+    This tutorial assumes that you've already read the section about :doc:`../docs/blocks_and_editables` and already have sample :doc:`CMS Package <package>` configured.
 
-    This tutorial assumes that you've already read the section about :doc:`../docs/blocks_and_editables`.
+Block Configuration
+-------------------
 
-.. note::
-
-    This tutorial assumes that you've already created your sample :doc:`CMS Package <package>`.
-
-1. Create configuration for your block
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a class, that would represent your block configuration.
-It should extend abstract ``BlockConfig`` class.
+It should extend abstract ``BlockConfig`` class:
 
 .. code-block:: php
     :linenos:
@@ -33,8 +29,7 @@ It should extend abstract ``BlockConfig`` class.
     {
     }
 
-
-Override ``configureAttributes`` method, to setup block title and description.
+Override ``configureAttributes`` method to define block title and description.
 
 .. code-block:: php
     :linenos:
@@ -55,28 +50,27 @@ Override ``configureAttributes`` method, to setup block title and description.
     }
 
 
-2. Create block template
-~~~~~~~~~~~~~~~~~~~~~~~~
+Create Block Template
+---------------------
 
-Create Twig file named ``my_text_block.html.twig`` in ``Resources/view/blocks/`` directory with the following content.
+Create Twig file named ``my_text_block.html.twig`` in ``Resources/view/blocks/`` directory with the following code in there:
 
 .. code-block:: html
     :linenos:
 
     <div>{{ property('my_content', 'html') }}</div>
 
-This will create property ``'my_content'`` with HTML editable.
+This will dynamically create block property named ``'my_content'`` and link CMS WYSIWYG editor to that property.
 
 .. note::
 
     You may override template name by calling ``$mapper->template('MyPackage:path/to/file.html.twig')`` inside ``BlockConfig::configureAttributes()`` method.
 
-3. Register block in CMS
-~~~~~~~~~~~~~~~~~~~~~~~~
+Register Your Block in CMS
+--------------------------
 
-The last step to do, is to add newly created block into CMS.
-
-If your package extends AbstractSupraCmsPackage, then just override getBlocks method of it:
+The last but not least step is register the block with CMS.
+If your package extends ``AbstractSupraCmsPackage``, then just override ``getBlocks`` method:
 
 .. code-block:: php
     :linenos:
@@ -122,4 +116,4 @@ Otherwise, this can be done by calling ``BlockCollection::addConfig()`` on packa
     }
 
 
-Now your block should appear in block menu.
+That's all. Your block is now registered and should appear in site block list.

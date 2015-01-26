@@ -2,18 +2,19 @@
     single: Command; Writing your own command
     single: Cookbook; Writing your own command
 
-Writing your own command
+Writing Your Own Command
 ========================
 
-General considerations
+General Considerations
 ----------------------
 
-Before getting started, you should read `Symfony's guide to creating basic command <http://symfony.com/doc/current/components/console/introduction.html#creating-a-basic-command>`_ - SiteSupra mostly follows the same approach, with minor differences:
+We would recommend to read `Symfony's guide to creating basic command <http://symfony.com/doc/current/components/console/introduction.html#creating-a-basic-command>`_ prior to proceed further.
+SiteSupra mostly follows the same approach with a few minor differences:
 
-* a command must extend ``Supra\Core\Console\AbstractCommand`` (or implement ``Supra\Core\DependencyInjection\ContainerAware``, read more about it in :doc:`../docs/di_container` section
-* there is no limit on where you store your commands or what namespace are you using - SiteSupra does not autoload commands, so you are free to choose your class structure
+* A command must extend ``Supra\Core\Console\AbstractCommand`` (or implement ``Supra\Core\DependencyInjection\ContainerAware``), read more about it in :doc:`../docs/di_container` section;
+* There is no limit on where you can store your commands or what namespace are you using. SiteSupra does not autoload commands, so you are free to choose your class structure.
 
-Summing up, basic console command can look like this;
+Basic console command can look like show below:
 
 .. code-block:: php
 
@@ -39,13 +40,13 @@ Summing up, basic console command can look like this;
         }
     }
 
-Of course, you can use any of the `helpers <http://symfony.com/doc/current/components/console/introduction.html#console-helpers>`_ bundled in Symfony Console - tables, dialogs and so on.
+Of course, you can use any of the `helpers <http://symfony.com/doc/current/components/console/introduction.html#console-helpers>`_ bundled in Symfony Console - tables, dialogs, and so on.
 
-Registering new Command from your Package
+Registering New Command from Your Package
 -----------------------------------------
 
-Let's assume that you have a Package created; if not, please refer to :doc:`package` first. When done, just register a
-new command instance in package's ``inject()`` method:
+Let's assume that you have a Package created (refer to :doc:`package` for package creating instructions).
+Now you can register a new command instance in package's ``inject()`` method:
 
 .. code-block:: php
 
@@ -68,4 +69,4 @@ new command instance in package's ``inject()`` method:
         }
     }
 
-After that, you can run your command with ``supra/cli.php foobar:do`` (shortcuts like ``supra/cli.php f:d``) are also working.
+After that, you can run your command with ``supra/cli.php foobar:do`` (shortcuts like ``supra/cli.php f:d`` are working also).

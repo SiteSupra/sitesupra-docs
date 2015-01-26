@@ -4,14 +4,15 @@
 Installing and configuring SiteSupra
 ====================================
 
-As SiteSupra is based on Symfony components, and manages dependencies with composer, the installation process is pretty
-straightforward; however, you may consider checking :doc:`requirements` first.
+SiteSupra is based on Symfony components and manages dependencies with composer. The installation process is pretty
+straightforward. However, you may consider checking :doc:`requirements` first.
 
 
 Cloning SiteSupra
 -----------------
 
 SiteSupra source code is hosted at `github <https://github.com/SiteSupra/sitesupra>`_.
+Clone or checkout SiteSupra into your work folder.
 
 .. code-block:: bash
 
@@ -21,28 +22,28 @@ SiteSupra source code is hosted at `github <https://github.com/SiteSupra/sitesup
 Configuring SiteSupra
 ---------------------
 
-When you've finished cloning SiteSupra, you have to do the following:
+Follow the next steps to configure SiteSupra on your computer:
 
-1.  run ``composer update`` to update dependencies
-2.  set up web server permissions for ``storage`` folder (you can stick to plain old chmod 777 or use ACL approach as does `Symfony <http://symfony.com/doc/current/book/installation.html#checking-symfony-application-configuration-and-setup>`_
-3.  copy ``supra/config.yml.example`` to ``supra/config.yml`` and set your database credentials
-4.  create database by running ``supra/cli.php doctrine:schema:update --force``
-5.  load initial fixtures by running ``supra/cli.php supra:bootstrap``
-6.  publish assets with ``supra/cli.php assets:publish``
+1.  Run ``composer update`` to update dependencies;
+2.  Set up web server permissions for ``storage`` folder (you can stick to plain old chmod 777 or use ACL approach as `Symfony <http://symfony.com/doc/current/book/installation.html#checking-symfony-application-configuration-and-setup>`_ does;
+3.  Copy ``supra/config.yml.example`` to ``supra/config.yml`` and provide database credentials;
+4.  Create database by running ``supra/cli.php doctrine:schema:update --force``;
+5.  Load initial fixtures by running ``supra/cli.php supra:bootstrap``;
+6.  Publish assets with ``supra/cli.php assets:publish``.
 
-All done! Now just point your web server of choice to ``web`` directory in SiteSupra project root.
+All done! Now just point your web server of choice to ``web`` directory in SiteSupra project's root.
 
 Configuring Apache
 ------------------
 
 .. index:: Installation; Apache
 
-Apache's ``DocumentRoot`` directive should point into ``web`` directory in SiteSupra project root. Symlinking should be
-enabled (add ``Options +FollowSymlinks`` for your virtual host), ``mod_rewrite`` is also required.
-
-Rewrite rules are pretty simple (don't worry, they are already provided in ``.htaccess`` file):
+Apache's ``DocumentRoot`` directive should point into ``web`` directory in SiteSupra project's root.
+Allow to follow symlinks and configure rewrite rules as listed below.
 
 .. code-block:: bash
+
+    Options +FollowSymlinks
 
     RewriteEngine On
 
@@ -51,6 +52,8 @@ Rewrite rules are pretty simple (don't worry, they are already provided in ``.ht
     RewriteRule ^ - [L,NS]
     RewriteRule ^.*$ /index.php$0 [L,NS]
 
+
+Rewrite rules for ``.htaccess`` are provided in ``.htaccess`` file that comes along with SiteSupra source code.
 
 Configuring nginx
 -----------------

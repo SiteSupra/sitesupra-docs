@@ -1,7 +1,7 @@
 .. index::
     single: Internals; Standard packages
 
-Standard packages
+Standard Packages
 =================
 
 Core
@@ -20,16 +20,16 @@ CmsAuthentication
 -----------------
 
 SiteSupra authentication layer is separated in CmsAuthentication bundle. It sets up SecurityContext and handles backend
-user authentication. If you need to authenticate frontend users, you have to implement this yourself.
+user authentication. It is not suitable for front-end user authentication.
 
 DebugBar
 --------
 
-Integrates `PHP DebugBar <http://phpdebugbar.com/>`_ into SiteSupra, allowing you to monitor all requests, request
-timelines, SQL queries, events and many more. This package is active only if SiteSupra is in debug mode.
+Integrates `PHP DebugBar <http://phpdebugbar.com/>`_ into SiteSupra allowing you to monitor requests, their
+ time lines, SQL queries, events, and much more. This package is active only when SiteSupra runs in debug mode.
 
 Framework
 ---------
 
 This package combines and integrates everything together. It sets up Doctrine, EntityAudit, Twig, and all other
-components. It also registers most of the commands that you can access from :doc:`supra_cli`
+components required to run SiteSupra. It also registers most of the commands that you can access from :doc:`supra_cli`.
