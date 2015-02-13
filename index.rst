@@ -78,7 +78,10 @@ Cookbook Articles:
 CMS:
 ----
 
-
+.. toctree::
+   :maxdepth: 1
+    
+   cms/user_manual
 
 Reference:
 ----------
