@@ -21,7 +21,7 @@ On the upper menu you can do following:
 
 .. image:: ../images/image01.png
 
-We recommend you to check the demo of Home page and the Blocks to see most of the SiteSupra page and text management features. However, ahead of jumping in and start editing, take a look at the website’s structure by clicking Sitemap icon.
+We recommend you to check the demo of Home page and the Blocks to see most of the SiteSupra page and text management features. However, ahead of jumping in and start editing, take a look at the website’s structure by clicking **Sitemap** icon.
 
 
 
@@ -30,7 +30,9 @@ Site Structure
 
 The initial site map is comprised of pages that show content.
 
-"**img**"
+.. image:: ../images/image02.png
+
+.. _site-structure-management:
 
 Site Structure Management
 -------------------------
@@ -38,38 +40,41 @@ Site Structure Management
 To delete a page
 ~~~~~~~~~~~~~~~~
 
-Choose the page you have decided to delete and click the Gears icon. To delete a page click Delete ﻿and confirm requested action by clicking Yes button.
+Choose the page you have decided to delete and click the **Gears** icon. To delete a page click **Delete** ﻿and confirm requested action by clicking **Yes** button.
 
-"**img**"
+.. image:: ../images/image03.png  
+.. image:: ../images/image04.png
+.. image:: ../images/image05.png
 
 To add a new page
 ~~~~~~~~~~~~~~~~~
 
-1. Click and hold " + " icon and drag & drop it to the required location. 
+1. Click and hold **" + "** icon and drag & drop it to the required location. 
 
-"**img**"
+.. image:: ../images/image06.png 
 
-2. When you hold and move the page around the Sitemap the drop location will be marked in blue. 
+2. When you hold and move the page around the **Sitemap** the drop location will be marked in blue. 
 
-"**img**"
+.. image:: ../images/image07.png 
 
-3. After you drop the page on the desired location a page properties window appears. Specify page Title. You may define Path which is a page name that appears in the page address. ﻿
+3. After you drop the page on the desired location a page properties window appears. Specify page **Title**. You may define Path which is a page name that appears in the page address. ﻿
 
-4. Click Template to choose a page template you want. You can go through a wide array of templates.
+4. Click **Template** to choose a page template you want. You can go through a wide array of templates.
 
-5. When you make your choice, click Create button.
+5. When you make your choice, click **Create** button.
 
-"**img**"
+.. image:: ../images/image08.png 
 
-6. Open created new page and specify required content for page blocks. Then click Publish to the upper right of the window. 
+6. Open created new page and specify required content for page blocks. Then click **Publish** to the upper right of the window. 
 
-"**img**"
+.. image:: ../images/image09.png 
+.. image:: ../images/image10.png 
 
-NOTE
+**NOTE**
 
 If by an accident you have dropped your new page in a wrong place, you can easily change page order in the menu. Simply drag & drop new page to the required place in Sitemap view. 
 
-"**img**"
+.. image:: ../images/image11.png
 
 
 Page Settings
@@ -90,21 +95,23 @@ Page Settings contains the page editing menu in the upper right pane and here yo
   - Page appearance in Sitemap
   - Admission to translate the page
 
-After you have made all the necessary changes, click Save to save changes. To publish final version of the page, click Publish. If you wish to continue working with this page some other time, click Close.
+After you have made all the necessary changes, click **Save** to save changes. To publish final version of the page, click **Publish**. If you wish to continue working with this page some other time, click **Close**.
+
+.. image:: ../images/image12.png
 
 Page status
 ~~~~~~~~~~~
 
-While in a Sitemap view, above the page icons or folders can appear inscription Draft, which means that page was changed, but the changes were not published. This inscription appears whenever you save the changes and close the page with the Close button without Publishing.
+While in a **Sitemap** view, above the page icons or folders can appear inscription **Draft**, which means that page was changed, but the changes were not published. This inscription appears whenever you save the changes and close the page with the **Close** button without **Publishing**.
 
-"**img**"
+.. image:: ../images/image13.png
 
 Main Toolbar options
 --------------------
 
 General editing options are displayed at the top of the menu.
 
-"**img**"
+.. image:: ../images/image14.png
 
 * **Insert block** - to insert new blocks on the page (see full description here [link to blocks])
 * **Page blocks** - displays a list of elements available for editing;
@@ -122,18 +129,18 @@ General editing options are displayed at the top of the menu.
 Main Menu Management
 --------------------
 
-The main menu block automatically picks up pages located under the Home page and builds menu according to the web site styles. If you want your main menu to have a page simply place it under the Home page in the SiteMap. You can drag and drop the pages into this level or rename existing pages. Here's how:
+The main menu block automatically picks up pages located under the Home page and builds menu according to the web site styles. If you want your main menu to have a page simply place it under the Home page in the **SiteMap**. You can drag and drop the pages into this level or rename existing pages. Here's how:
 
 To change page order in the menu
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. You can access Site map by clicking Site map or All pages buttons on the page toolbar.
+1. You can access Site map by clicking **Sitemap** or **All pages** buttons on the page toolbar.
 
-"**img**"
+.. image:: ../images/image15.png
 
 2. In the Site map, click and hold required page and drag it to the new location.
 
-"**img**"
+.. image:: ../images/image16.png
 
 Blocks
 ------
@@ -143,68 +150,68 @@ Each page consists of several functional widgets, the blocks, which add function
 To add new block
 ~~~~~~~~~~~~~~~~
 
-1. While in a Sitemap view, select the page you want to edit and click Open.
+1. While in a **Sitemap** view, select the page you want to edit and click **Open**.
 
-"**img**"
+.. image:: ../images/image17.png
 
-2. Click Edit page ﻿button to the upper right of the window.
+2. Click **Edit page** ﻿button to the upper right of the window.
 
-"**img**"
+.. image:: ../images/image18.png
 
-3. Click Insert block in the main toolbar, which appears on top of the page. The Insert block panel opens on the left. Then select Features.
+3. Click **Insert block** in the main toolbar, which appears on top of the page. The **Insert block** panel opens on the left. Then select **Features**.
 
-"**img**"
+.. image:: ../images/image19.png
 
 4. Click the block you need and drag & drop it to where you want it in the page.
 
-"**img**"
+.. image:: ../images/image20.png
 
-5. Specify required content for the block properties. Then click Done and Publish the page.
+5. Specify required content for the block properties. Then click **Done** and **Publish** the page.
 
-"**img**"
+.. image:: ../images/image21.png
 
 To delete block
 ~~~~~~~~~~~~~~~~
 
 If you don't need a certain block it's easy to remove it from the page: 
 
-1. While in a Sitemap view, select the page you want to edit and click Open. 
+1. While in a **Sitemap** view, select the page you want to edit and click **Open**. 
 
-"**img**"
+.. image:: ../images/image17.png
 
-2. Click Edit page ﻿button to the upper right of the window to start page customisation.
+2. Click **Edit** page ﻿button to the upper right of the window to start page customisation.
 
-"**img**"
+.. image:: ../images/image18.png
 
-3. Click the block you want to remove. Block properties panel opens on the right side of window﻿. 
-4. To remove a block click Delete block button. 
+3. Click the block you want to remove. **Block properties** panel opens on the right side of window﻿. 
+4. To remove a block click **Delete** block button. 
 
-"**img**"
+.. image:: ../images/image22.png
 
 5. Confirm your choice and click Yes. 
 
-"**img**"
+.. image:: ../images/image23.png
 
-6.  To finish work and save changes, click Publish button to the upper right of the window﻿.
+6.  To finish work and save changes, click **Publish** button to the upper right of the window﻿.
 
 To move blocks within a page
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It's easy to change location of the block on a page, here's how: 
 
-1. While in the Sitemap view, select the page you want to edit and click Open. 
+1. While in the **Sitemap** view, select the page you want to edit and click Open. 
 
-"**img**"
+.. image:: ../images/image17.png
 
-2. Click Edit page button to the upper right of the window.
+2. Click **Edit** page button to the upper right of the window.
 
-"**img**"
+.. image:: ../images/image18.png
 
 3. Select the block you want to move by Clicking and holding it with the mouse and move it to the new location. Make sure not to click the block as you will enter in a block editing mode where moving blocks isn't possible. When you hold and move the block around the page the drop location will be marked in blue. 
 
-"**img**"
+.. image:: ../images/image24.png
 
-4. To finish and save block repositioning changes within a page, click Publish button on right-top of the window.
+4. To finish and save block repositioning changes within a page, click **Publish** button on right-top of the window.
 
 **IMPORTANT**: 
 **Blocks are divided into two main categories:** 
@@ -217,39 +224,46 @@ If a block is Non-Global, it will appear only on pages where it is added manuall
 Templates
 ---------
 
-Templates control how your website appears. SiteSupra template provides a method of integration between content and blocks in a specific, controlled view. Site is created by first placing one or more blocks on a template and then creating pages based on those templates.  While each template can be configured separately, when adding new pages and selecting template, page will consist of template's specified design, layout and blocks within placeholders, so you can significantly save the time by creating new pages and content.  
+**Templates** control how your website appears. SiteSupra template provides a method of integration between content and blocks in a specific, controlled view. Site is created by first placing one or more blocks on a template and then creating pages based on those templates.  While each template can be configured separately, when adding new pages and selecting template, page will consist of template's specified design, layout and blocks within placeholders, so you can significantly save the time by creating new pages and content.  
 
-While in a Sitemap view, you can switch to Templates editing mode:
+While in a **Sitemap** view, you can switch to **Templates** editing mode:
 
-"**img**"
+.. image:: ../images/image25.png
 
 If you want to create a page with unique set of blocks to implement original page design, you would need to create a separate page template first so that other pages are not affected. Creating page template is easy, you can just duplicate a page template you like. 
 
 For example, website consists of three simple pages: Home, Services and Contacts.
 
-"**img**"
+.. image:: ../images/image26-01.png
+.. image:: ../images/image26-02.png
+.. image:: ../images/image26-03.png
 
-Which in templates will look like this:
+Which in templates view will look like this:
 
-"**img**"
+.. image:: ../images/image27.png
 
 Where pages are built on basis of:
-* Page Home is created from template Home, where Home page content is inherit Header/Footer and Home template content.
-* Page Services is created from template Inner, where Services page content is inherit from Header/Footer and * Inner templates.
-* Page Contacts is created from template Inner, where Contacts page content is inherit from Header/Footer and * Inner - the same as for Services. 
 
-"**img**"
+* Page Home is created from template Home, where Home page content is inherit Header/Footer and Home template content.
+* Page Services is created from template Inner, where Services page content is inherit from Header/Footer and Inner templates.
+* Page Contacts is created from template Inner, where Contacts page content is inherit from Header/Footer and Inner - the same as for Services. 
+
+.. image:: ../images/image28.png
 
 While creating pages, you can customise templates separately by adding necessary blocks to the placeholders.
 
 Dashboard
 ---------
 
-You can open the Dashboard by clicking the icon on the upper left of the page. 
+You can open the **Dashboard** by clicking the icon on the upper left of the page. 
 
-"**img**"
+.. image:: ../images/image29.png
 
-The admin panel is very simplistic and from here you can manage Back-office Users [link to], Files[link to] or return to Pages[link to Page Management].
+The admin panel is very simplistic and from here you can manage  :ref:`Back-office Users <back-office-users>`, :ref:`Files <files>` or return to :ref:`Site Structure Management <site-structure-management>`.
+
+.. image:: ../images/image30.png
+
+.. _back-office-users:
 
 Back-office Users
 ~~~~~~~~~~~~~~~~~
@@ -260,13 +274,16 @@ You can setup a user account for your website contributors and assign certain pr
 * **Supervisors:** As a supervisor, you can publish (and unpublish) documents on the website, and approve or disapprove Contributor’s requests for publication.
 * **Contributors:** As a contributor, you can create and edit content in the CMS. When your changes are ready to be published on the website, they have to be approved by a Supervisor.
 
-You can add new users by clicking “+” on the left side and drag-and-drop the icon to necessary role. 
+You can add new users by clicking **“+”** on the left side and drag-and-drop the icon to necessary role. 
 
-"**img**"
+.. image:: ../images/image31.png
 
-Then add User Name and E-mail, click Done. New user will receive invitation to become an admin, supervisor or contributor of your site.
+Then add User Name and E-mail, click **Done**. New user will receive invitation to become an admin, supervisor or contributor of your site.
 
-"**img**"
+.. image:: ../images/image32.png
+
+
+.. _files:
 
 Files
 ~~~~~
