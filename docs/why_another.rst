@@ -1,5 +1,5 @@
-Why Another CMS System
-======================
+Why Another CMS
+===============
 
 SiteSupra combines a powerful web framework and an elegant CMS to allow developing and managing websites easily. Developers will enjoy SiteSupra while building simple websites or large, feature-rich web apps. Website editors will love SiteSupra because of advanced CMS features packed into unique elegant and simple interface. While there are many great web frameworks and good CMS products separately there are few products that offer those qualities together. SiteSupra is on the mission to bring the best of both worlds in a single product.  
 
