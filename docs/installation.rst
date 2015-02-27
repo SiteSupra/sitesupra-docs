@@ -1,12 +1,17 @@
 .. index::
    single: Installation
 
-Installing and Configuring SiteSupra Demo Site
-==============================================
+Installing SiteSupra 
+====================
 
 SiteSupra is based on Symfony components and manages dependencies with composer. The installation process is pretty
 straightforward. However, you may consider checking :doc:`requirements` first.
 
+For first time users we would recommend to start with cloning SiteSupra Demo site. 
+If you want to make SiteSupra better feel free to clone SiteSupra core.
+
+Installing and Configuring SiteSupra Demo Site
+==============================================
 
 Cloning SiteSupra Demo Site
 ---------------------------
@@ -18,8 +23,8 @@ Clone or checkout SiteSupra into your work folder.
 
     $ git clone https://github.com/sitesupra/sitesupra-demo.git sitesupra
 
-Configuring SiteSupra
----------------------
+Configuring SiteSupra Demo Site
+-------------------------------
 
 To configure SiteSupra on your computer follow the next steps :
 
@@ -30,6 +35,7 @@ To configure SiteSupra on your computer follow the next steps :
 5.  Setup  assets ``php supra/cli.php assets:publish``;
 6.  Load fixtures ``php supra/cli.php sample:fixtures:load storage/fixtures``;
 
+That's all! Now configure web server of your choice (see chapter Configuring Web Server below) and enjoy SiteSupra.
 
 Installing and Configuring SiteSupra Core
 =========================================
