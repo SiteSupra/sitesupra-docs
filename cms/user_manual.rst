@@ -7,7 +7,8 @@ Welcome to the SiteSupra CMS guide. This guide provides comprehensive informatio
 Log in
 -------
 
-Start by logging into the admin panel of your website. Visit your site's login page by placing “/backend” after your domain name e.g. http://example.com/backend. Log into SiteSupra using your e-mail and password.
+Start by logging into the admin panel of your website. Visit your site's login page by placing “/backend” after your domain name e.g. http://example.com/backend. 
+Default login name is ``admin@sitesupra.org`` and password is ``admin``.
 
 Initial view
 ~~~~~~~~~~~~~
