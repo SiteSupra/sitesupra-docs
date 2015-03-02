@@ -7,7 +7,7 @@ Welcome to the SiteSupra CMS guide. This guide provides comprehensive informatio
 Log in
 -------
 
-Start by logging into the admin panel of your website. Visit your site's login page by placing “/cms” after your domain name e.g. http://example.com/cms. Log into SiteSupra using your e-mail and password.
+Start by logging into the admin panel of your website. Visit your site's login page by placing “/backend” after your domain name e.g. http://example.com/backend. Log into SiteSupra using your e-mail and password.
 
 Initial view
 ~~~~~~~~~~~~~
