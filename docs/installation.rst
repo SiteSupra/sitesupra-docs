@@ -8,7 +8,7 @@ SiteSupra is based on Symfony components and manages dependencies with composer.
 straightforward. However, you may consider checking :doc:`requirements` first.
 
 For first time users we would recommend to start with cloning SiteSupra Demo site. 
-If you want to make SiteSupra better feel free to clone SiteSupra core.
+If you would like to contribute feel free to clone SiteSupra core. 
 
 Installing and Configuring SiteSupra Demo Site
 ==============================================
